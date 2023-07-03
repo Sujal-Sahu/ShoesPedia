@@ -42,7 +42,7 @@ const signup = () => {
          }
   },[name,address,zip,password,phone])
   const handlesignup=async()=>{
-    const response = await fetch("http://localhost:3000/api/signup",{
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/signup`,{
       method:"POST",
       body:JSON.stringify({
        name:name,email:email,password:password,phone:phone,address:address,city:city,state:state,country:country,pincode:zip

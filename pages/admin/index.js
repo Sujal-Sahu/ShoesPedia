@@ -37,7 +37,7 @@ export default Index
 
 export async function getServerSideProps(){
   if(!mongoose.connections[0].readyState){
-    await mongoose.connect("mongodb://127.0.0.1:27017/Ecommerce");
+    await mongoose.connect(process.env.MONGO_URI);
   }
   let orders=await Order.find().limit(6);
   let products=await Product.find().limit(5);

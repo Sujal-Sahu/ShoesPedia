@@ -12,7 +12,7 @@ const login = (props) => {
   const [email,setemail]=useState("");
   const [password,setpassword]=useState("");
   const handlelogin=async()=>{
-    const response=await fetch("http://localhost:3000/api/login",{
+    const response=await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`,{
       method:'POST',
       body:JSON.stringify({
          email:email,

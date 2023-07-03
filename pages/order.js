@@ -79,7 +79,7 @@ export default order
 
 export async function getServerSideProps(context){
   if(!mongoose.connections[0].readyState){
-    await mongoose.connect("mongodb://127.0.0.1:27017/Ecommerce");
+    await mongoose.connect(process.env.MONGO_URI);
   }
   let myorder=await Order.find({"_id":context.query.id});
   console.log(myorder)

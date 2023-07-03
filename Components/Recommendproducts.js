@@ -57,7 +57,7 @@ const Recommendproducts = ({products}) => {
           </article>
         ))}
       </Slider>
-      <div className="flex items-center justify-between mx-4 text-center mb-8">
+      {products && <div className="flex items-center justify-between mx-4 text-center mb-8">
      
         <button onClick={handlePrev} disabled={currentSlide === 0} className="font-bold underline">
         <FaChevronLeft className="inline" />
@@ -68,7 +68,7 @@ const Recommendproducts = ({products}) => {
           <FaChevronRight className="inline" />
         </button>
       </div>
-       
+}
     </div>
   )
 }

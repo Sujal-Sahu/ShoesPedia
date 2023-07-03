@@ -11,7 +11,7 @@ import mongoose from "mongoose";
 const allproducts = ({images}) => {
 
 const srcset=(image)=>{
-  fetch(`http://localhost:3000/api/getImage?filename=${image}`)
+  fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getImage?filename=${image}`)
     .then((response) => response.blob())
     .then((blob) => {
       console.log(blob)
@@ -117,7 +117,7 @@ export default allproducts
 
 export async function getServerSideProps(){
   if(!mongoose.connections[0].readyState){
-    await mongoose.connect("mongodb://127.0.0.1:27017/Ecommerce");
+    await mongoose.connect(process.env.MONGO_URI);
   }
   let images=await Image.find();
   return{

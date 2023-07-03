@@ -25,7 +25,7 @@ const Post = ({key,user,logout,addcart,removecart,clearcart,cart,subtotal,buynow
   },[])
   
   const checkavailability=async()=>{
-         const pins=await fetch('http://localhost:3000/api/pincode');
+         const pins=await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
          const pinjson=await pins.json();
          console.log(pinjson);
          if(Object.keys(pinjson).includes(pincode)){

@@ -23,6 +23,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export default function Home({user,logout,addcart,removecart,clearcart,cart,subtotal,products}) {
+  console.log(products);
   const collectionsRef = useRef(null);
 
   const scrollToCollections = () => {
@@ -107,20 +108,20 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
     <h1 class="sm:text-3xl text-2xl font-medium title-font m-2 text-gray-900 dark:text-gray-100 aos-init aos-animate" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">Bestselling Products</h1>
       <div class="h-1 w-20 bg-pink-500 rounded"></div>
     </div>
-    {/* <Recommendproducts products={products}/> */}
+    <Recommendproducts products={products}/>
        <Footer/>
     </>
   )
 }
 
 export async function getServerSideProps(context){
-  // if(!mongoose.connections[0].readyState){
-  //   await mongoose.connect("mongodb://127.0.0.1:27017/Ecommerce");
-  // }
-  // let products=await Product.find();
+  if(!mongoose.connections[0].readyState){
+    await mongoose.connect(process.env.MONGO_URI);
+  }
+  let products=await Product.find();
   return{
-    // props:{products:JSON.parse(JSON.stringify(products))}
-    props:{products:null}
+    props:{products:JSON.parse(JSON.stringify(products))}
+    // props:{products:null}
   }
 }
 
