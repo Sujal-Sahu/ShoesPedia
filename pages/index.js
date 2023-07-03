@@ -117,9 +117,10 @@ export async function getServerSideProps(context){
   if(!mongoose.connections[0].readyState){
     await mongoose.connect("mongodb://127.0.0.1:27017/Ecommerce");
   }
-  let products=await Product.find();
+  // let products=await Product.find();
   return{
-    props:{products:JSON.parse(JSON.stringify(products))}
+    // props:{products:JSON.parse(JSON.stringify(products))}
+    props:{products:null}
   }
 }
 
