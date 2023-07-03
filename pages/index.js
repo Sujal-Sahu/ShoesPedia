@@ -23,7 +23,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 
 export default function Home({user,logout,addcart,removecart,clearcart,cart,subtotal,products}) {
-  console.log(products);
+  // console.log(products);
   const collectionsRef = useRef(null);
 
   const scrollToCollections = () => {
@@ -121,7 +121,6 @@ export async function getServerSideProps(context){
   let products=await Product.find();
   return{
     props:{products:JSON.parse(JSON.stringify(products))}
-    // props:{products:null}
   }
 }
 
