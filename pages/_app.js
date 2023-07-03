@@ -1,4 +1,5 @@
 // import '@/styles/globals.css'
+import 'tailwindcss/tailwind.css';
 import '../styles/globals.css'
 import '@fortawesome/fontawesome-free/css/all.min.css'
 import { useRouter } from 'next/router';
