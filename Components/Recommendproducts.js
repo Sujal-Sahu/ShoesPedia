@@ -33,7 +33,7 @@ const Recommendproducts = ({products}) => {
   return (
     <div>
       <Slider ref={sliderRef} {...settings}>
-        {Object.keys(products).map((k) => (
+        {products && Object.keys(products).map((k) => (
           <article key={products[k]._id} className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300">
            <Link href={`/product/${products[k].slug}`}><a>
         <div className="relative flex items-end overflow-hidden rounded-xl">
