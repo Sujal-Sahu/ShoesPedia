@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from 'Components/Navbar'
 
-const Contact = () => {
+const Contact = ({user,logout}) => {
   return (
     <div>
-      <Navbar heading="Contact"/>
+      <Navbar user={user} logout={logout} heading="Contact"/>
     </div>
   )
 }

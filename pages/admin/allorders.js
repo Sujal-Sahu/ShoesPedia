@@ -2,7 +2,7 @@ import FullLayout from "../../layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../theme/theme";
 import { Grid } from "@mui/material";
-import OrderTable from "./ordertablerendering";
+import OrderTable from "../../Components/admin/Ordertablerendering"
 import Order from "models/Order";
 import mongoose from "mongoose";
 import React from 'react'

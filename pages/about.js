@@ -1,9 +1,9 @@
 import React from 'react'
 import Navbar from 'Components/Navbar'
-const About = () => {
+const About = ({user,logout}) => {
   return (
     <div>
-        <Navbar heading="About"/>
+        <Navbar user={user} logout={logout} heading="About"/>
        about
     </div>
   )

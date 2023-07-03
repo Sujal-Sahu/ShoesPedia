@@ -9,12 +9,12 @@ import {
   TableRow,
   Chip,
 } from "@mui/material";
-import BaseCard from "../../Components/baseCard/BaseCard";
+import BaseCard from "../baseCard/BaseCard";
 
 
-const ProductPerfomance = ({orders}) => {
+const Productstablerendering = ({products}) => {
   return (
-    <BaseCard title="Orders">
+    <BaseCard title="Products">
       <Table
         aria-label="simple table"
         sx={{
@@ -26,40 +26,35 @@ const ProductPerfomance = ({orders}) => {
           <TableRow>
             <TableCell>
               <Typography color="textSecondary" variant="h6">
-                Order ID
+                Title
               </Typography>
             </TableCell>
             
             <TableCell>
               <Typography color="textSecondary" variant="h6">
-                Email
+                Category
               </Typography>
             </TableCell>
             <TableCell>
               <Typography color="textSecondary" variant="h6">
-                Products
+                Image
               </Typography>
             </TableCell>
             <TableCell>
               <Typography color="textSecondary" variant="h6">
-                Payment Status
-              </Typography>
-            </TableCell>
-            <TableCell>
-              <Typography color="textSecondary" variant="h6">
-                Delivery Status
+                Size/Color
               </Typography>
             </TableCell>
             <TableCell align="right">
               <Typography color="textSecondary" variant="h6">
-                Amount
+                Price
               </Typography>
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {orders.map((order) => (
-            <TableRow key={order._id}>
+          {products && products.map((product) => (
+            <TableRow key={product._id}>
               <TableCell>
                 <Typography
                   sx={{
@@ -67,7 +62,7 @@ const ProductPerfomance = ({orders}) => {
                     fontWeight: "500",
                   }}
                 >
-                  {order.orderId}
+                  {product.title}
                 </Typography>
               </TableCell>
               <TableCell>
@@ -84,33 +79,32 @@ const ProductPerfomance = ({orders}) => {
                         fontWeight: "600",
                       }}
                     >
-                      {order.email}
+                      {product.name}
+                    </Typography>
+                    <Typography
+                      color="textSecondary"
+                      sx={{
+                        fontSize: "13px",
+                      }}
+                    >
+                      {product.category}
                     </Typography>
                   </Box>
                 </Box>
               </TableCell>
               <TableCell>
                 <Typography color="textSecondary" variant="h6">
-                <ol>
-                      {order.products && Object.keys(order.products).map((k)=>{
-                         return <li key={k}>{order.products[k].name}</li>
-                      })}
-                      </ol>
+                  <img width={100} height={100} src={product.img} alt={`${product.title} related image`}></img>
                 </Typography>
               </TableCell>
               <TableCell>
                 <Typography color="textSecondary" variant="h6">
-                  {order.status}
-                </Typography>
-              </TableCell>
-              <TableCell>
-                <Typography color="textSecondary" variant="h6">
-                  {order.deliveryStatus}
+                  {product.size}/{product.color}
                 </Typography>
               </TableCell>
               
               <TableCell align="right">
-                <Typography variant="h6">₹{order.amount}</Typography>
+                <Typography variant="h6">₹{product.price}</Typography>
               </TableCell>
             </TableRow>
           ))}
@@ -120,5 +114,5 @@ const ProductPerfomance = ({orders}) => {
   );
 };
 
-export default ProductPerfomance;
+export default Productstablerendering;
 

@@ -3,7 +3,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../theme/theme";
 import React from 'react'
 import { Grid } from "@mui/material";
-import ProductTable from "./productstablerendering";
+import ProductTable from "../../Components/admin/Productstablerendering";
 import Product from "models/Product";
 import mongoose from "mongoose";
 

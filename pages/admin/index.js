@@ -4,11 +4,11 @@ import SalesOverview from "../../Components/dashboard/SalesOverview";
 import FullLayout from "../../layouts/FullLayout";
 import { ThemeProvider } from "@mui/material/styles";
 import theme from "../../theme/theme";
-import OrderTable from "./ordertablerendering";
+import OrderTable from "../../Components/admin/Ordertablerendering"
 import Order from "models/Order";
 import mongoose from "mongoose";
 import Product from "models/Product";
-import ProductTable from "./productstablerendering";
+import ProductTable from "../../Components/admin/Productstablerendering";
 
 const Index=({orders,products})=>{
   return (
