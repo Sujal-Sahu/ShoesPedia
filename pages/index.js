@@ -44,19 +44,19 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
       </Head>
       <Navbar user={user} logout={logout} heading="HomePage"/>
    
-    <div className="flex flex-row items-center justify-between mt-20 h-[80vh]">
-         <div className="flex flex-col ml-52 mr-16 mt-28 my-20">
+    <div className="flex flex-col md:flex-row items-center justify-between mt-20 md:mt-20 h-[80vh]">
+         <div className="flex flex-col ml-4 md:ml-52 mr-4 md:mr-16 mt-4 md:mt-28 my-4">
               <div className={styles.slide_in}>
-                 <h1 className='text-black-700 text-5xl mb-12 font-bold'>ShoesPedia</h1>
+                 <h1 className='text-black-700 text-2xl md:text-5xl mb-4 md:mb-12 font-bold'>ShoesPedia</h1>
               </div>
-              <div className={`text-black-700 mr-20 ${styles.slide_in}`}>
+              <div className={`text-black-700 mr-4 md:mr-20 ${styles.slide_in}`}>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi quas veritatis eaque, quis vel quidem. Suscipit totam aliquid, optio beatae alias doloribus perspiciatis. Reprehenderit laboriosam esse, odit cupiditate id accusamus cumque dicta.
               </div>
               <div className={styles.slide_in}>
-              <button className='flex items-center space-x-1.5 rounded-lg bg-blue-700 px-4 py-2 text-white duration-100 hover:bg-blue-800 mt-12' onClick={() => scrollToCollections()}>View Collections</button>
+              <button className='flex items-center space-x-1.5 rounded-lg bg-blue-700 px-2 md:px-4 py-1 md:py-2 text-white duration-100 hover:bg-blue-800 mt-4 md:mt-12' onClick={() => scrollToCollections()}>View Collections</button>
               </div>
          </div>
-         <div className={`mr-24 ${styles.slide_in}`}>
+         <div className={`hidden md:block md:mr-24 ${styles.slide_in}`}>
           <Image src={bgimg} width={1000} height={1000}/>
          </div>     
     </div>
