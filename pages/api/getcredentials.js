@@ -8,9 +8,10 @@ const handler=async(req,res)=>{
     if(req.method=='POST'){
        let data=jwt.verify((token),process.env.JWT_SECRET);
        let u=await User.findOne({email:data.email});
+       let password=data.password;
        const {name,email,phone,address,pincode}=u;
 
-       res.status(200).json({name,email,phone,address,pincode});
+       res.status(200).json({name,email,phone,address,pincode,password});
     }
     else{
         res.status(400).json({error:"this method is not allowed."})

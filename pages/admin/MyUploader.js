@@ -11,7 +11,6 @@ function MyUploader() {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     if (file) {
       try {
         const formData = new FormData();

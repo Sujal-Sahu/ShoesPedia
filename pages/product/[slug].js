@@ -82,6 +82,7 @@ const Post = ({key,user,logout,addcart,removecart,clearcart,cart,subtotal,buynow
   return (
     <div>
       <Navbar key={key} user={user} logout={logout} heading="Product"/>
+      <div className="h-20"></div>
 <section className="text-gray-600 body-font overflow-hidden">
 <ToastContainer
 position="top-right"

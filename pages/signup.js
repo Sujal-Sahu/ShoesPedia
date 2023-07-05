@@ -1,8 +1,12 @@
 import React, { useState,useEffect } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 const signup = () => {
   const router=useRouter();
+  const [redirecturl, setRedirectUrl] = useState(null);
   const [name,setname]=useState("");
   const [address,setaddress]=useState("");
   const [city,setcity]=useState("");
@@ -14,9 +18,18 @@ const signup = () => {
   const [disabled, setdisabled] = useState(true);
   const [pinjson, setpinjson] = useState();
   const [email, setemail] = useState("");
+
+  useEffect(() => {
+    setRedirectUrl(router.query.redirect || null);
+  }, [router.query.redirect]);
+ 
   useEffect(()=>{
       if(localStorage.getItem('token')){
-          router.push('/');
+          if (redirecturl) {
+        router.push('/' + redirecturl);
+      } else {
+        router.push('/'); // Redirect to home page if redirecturl is not set
+      }
       }
      const handlefetch=async()=>{
         const pins=await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
@@ -52,13 +65,41 @@ const signup = () => {
     console.log(jsonData);
     if(jsonData.success){
       localStorage.setItem('token',JSON.stringify(jsonData.authToken));
-      router.push('/');
+      if (redirecturl) {
+        router.push(`/${redirecturl}`);
+      } else {
+        router.push('/');
+      }
+    }
+    else{
+        toast.error("Some Error Occured, Please try again...", {
+            position: "top-left",
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
     }
   }
   return (
     <div>
       <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" />
 <div class="h-screen bg-indigo-50">
+<ToastContainer
+position="top-left"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
         <div class="lg:col-span-2 col-span-3 space-y-8 px-12 m-auto w-2/3">
 
         <div class="rounded-md pt-28">

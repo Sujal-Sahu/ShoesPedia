@@ -4,8 +4,10 @@ import { ToastContainer, toast } from 'react-toastify';
 import Script from 'next/script';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from 'Components/Navbar';
+import { useRouter } from 'next/router';
 
 const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
+    const router=useRouter();
   const [name,setname]=useState("");
   const [address,setaddress]=useState("");
   const [city,setcity]=useState("");
@@ -16,6 +18,7 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
   const [phone,setphone]=useState("");
   const [disabled, setdisabled] = useState(true);
   const [pinjson, setpinjson] = useState();
+ 
   useEffect(()=>{
      const handlefetch=async()=>{
         const pins=await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
@@ -30,8 +33,16 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
         let a = await emailtemp.json();
         console.log(a);
         setemail(a.email);
+        setname(a.name);
+        setzip(a.pincode);
+        setphone(a.phone);
+        setaddress(a.address);
+        }
+        else{
+            router.push('/login?redirect=checkout');
         }
      }
+     
      handlefetch();
   },[])
   useEffect(()=>{
@@ -195,7 +206,7 @@ theme="light"
                                         <option value="HK">Hong Kong</option>
                                         <option value="IE">Ireland</option>
                                         <option value="IT">Italy</option>
-                                        <option value="IT" selected="selected">India</option>
+                                        <option value="IN" selected="selected">India</option>
                                         <option value="JP">Japan</option>
                                         <option value="LU">Luxembourg</option>
                                         <option value="MX">Mexico</option>

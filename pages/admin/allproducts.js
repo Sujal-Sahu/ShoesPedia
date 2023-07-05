@@ -6,8 +6,31 @@ import { Grid } from "@mui/material";
 import ProductTable from "../../Components/admin/Productstablerendering";
 import Product from "models/Product";
 import mongoose from "mongoose";
+import { useRouter } from "next/router";
 
 const allproducts = ({products}) => {
+  const router=useRouter();
+  useEffect(()=>{
+      const handlefetch=async()=>{
+        const token=JSON.parse(localStorage.getItem('token'));
+        const usertemp=await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/getcredentials`,{
+          method:'POST',
+          body: JSON.stringify({token})
+      })
+      let a = await usertemp.json();
+      console.log(a);
+      if(a.email!==process.env.NEXT_PUBLIC_EMAIL || a.password!==process.env.NEXT_PUBLIC_PASSWORD){
+        localStorage.removeItem('token');
+        router.push('/admin/login');
+      }
+      }
+      if(localStorage.getItem('token')){
+          handlefetch();
+      }
+      else{
+        router.push('/admin/login');
+      }
+  },[])
   return (
     <div>
         <ThemeProvider theme={theme}>

@@ -34,7 +34,7 @@ const cart = (props) => {
                 <span className="cursor-pointer rounded-r bg-gray-100 py-1 px-3 duration-100 hover:bg-blue-500 hover:text-blue-50" onClick={(event)=>{event.preventDefault();addcart(k,1,cart[k].name,10,499,"white")}}> + </span>
               </div>
               <div className="flex items-center space-x-4">
-                <p className="text-sm">₹259.000</p>
+                <p className="text-sm">₹{cart[k].price*cart[k].qty}</p>
                 <button onClick={()=>{removecart(k,cart[k].qty,cart[k].price,cart[k].name,cart[k].size,cart[k].variant)}}>
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-5 w-5 cursor-pointer duration-150 hover:text-red-500">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />

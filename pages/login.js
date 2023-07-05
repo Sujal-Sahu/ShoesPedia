@@ -1,36 +1,77 @@
 import React, { useEffect, useState } from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const login = (props) => {
   const router=useRouter();
-  useEffect(()=>{
-        if(localStorage.getItem('token')){
-            router.push('/');
-        }
-  },[])
+  // console.log(router.query);
+  const [redirecturl, setRedirectUrl] = useState(null);
+
+  useEffect(() => {
+    setRedirectUrl(router.query.redirect || null);
+  }, [router.query.redirect]);
+ 
+  useEffect(() => {
+    if (localStorage.getItem('token')) {
+      if (redirecturl) {
+        router.push('/' + redirecturl);
+      } else {
+        router.push('/'); // Redirect to home page if redirecturl is not set
+      }
+    }
+  }, [redirecturl]);
+
   const [email,setemail]=useState("");
   const [password,setpassword]=useState("");
-  const handlelogin=async()=>{
-    const response=await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`,{
-      method:'POST',
-      body:JSON.stringify({
-         email:email,
-         password:password
-      })
-    })
-    const JSONdata=await response.json();
+  const handlelogin = async () => {
+    const response = await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/login`, {
+      method: 'POST',
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    });
+    const JSONdata = await response.json();
     console.log(JSONdata);
-    if(JSONdata.success){
-       localStorage.setItem('token',JSON.stringify(JSONdata.authToken));
-       props.user.value=JSONdata.authToken;
-       router.push('/');
+    if (JSONdata.success) {
+      localStorage.setItem('token', JSON.stringify(JSONdata.authToken));
+      props.user.value = JSONdata.authToken;
+      if (redirecturl) {
+        router.push(`/${redirecturl}`);
+      } else {
+        router.push('/');
+      }
     }
-  }
+    else{
+      toast.error("Invalid credentials", {
+        position: "top-left",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+  };
   return (
     <div>
      <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" />
-
+     <ToastContainer
+position="top-left"
+autoClose={3000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
 <div className="min-h-screen flex flex-col items-center justify-center bg-gray-300">
   <div className="flex flex-col bg-white shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
     <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">Login To Your Account</div>
@@ -91,7 +132,7 @@ const login = (props) => {
       </form>
     </div>
     <div className="flex justify-center items-center mt-6">
-      <Link href="/signup" target="_blank" className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center"><a className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
+      <Link href={`/signup?redirect=${redirecturl}`} target="_blank" className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center"><a className="inline-flex items-center font-bold text-blue-500 hover:text-blue-700 text-xs text-center">
         <span>
           <svg className="h-6 w-6" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
             <path d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
