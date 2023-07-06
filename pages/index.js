@@ -61,7 +61,7 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
          </div>     
     </div> */}
     <div className="flex flex-col md:flex-row items-center justify-between mt-40 md:mt-20 h-[80vh]">
-         <div className="flex flex-col w-full md:w-2/3 h-full md:h-full px-8 md:px-32 items-center md:items-start justify-center">
+         <div className="flex flex-col w-full md:w-2/3 h-full md:h-full sm:px-8 md:px-32 items-center md:items-start justify-center">
               <div className={`${styles.slide_in}`}>
                  <h1 className='text-black-700 text-2xl md:text-4xl lg:text-5xl mb-4 md:mb-12 font-bold'>ShoesPedia</h1>
               </div>
