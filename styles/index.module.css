@@ -96,6 +96,16 @@
     }
   }
 
+  .suj{
+    text-align: left;
+  }
+
+  @media screen and (max-width: 761px) {
+    /* CSS styles for screens with a maximum width of 761px */
+    .suj{
+        text-align: center;
+    }
+  }
   /* .item_col .collectionimages{
     animation: zoomInUp 0.5s ease-in-out forwards;
     transform-origin: center bottom;
