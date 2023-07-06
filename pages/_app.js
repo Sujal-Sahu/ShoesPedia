@@ -33,7 +33,7 @@ export default function App({ Component, pageProps }) {
     }
     catch(error){
       console.error(error);
-      localStorage.clear();
+      localStorage.removeItem('cart');
     }
     const token=localStorage.getItem('token');
     if(token){

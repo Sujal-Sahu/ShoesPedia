@@ -5,7 +5,7 @@ import { Grid } from "@mui/material";
 import OrderTable from "../../Components/admin/Ordertablerendering"
 import Order from "models/Order";
 import mongoose from "mongoose";
-import React from 'react'
+import React from 'react';
 import { useRouter } from "next/router";
 import { useEffect } from "react";
 

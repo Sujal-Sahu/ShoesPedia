@@ -42,7 +42,7 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
         <link rel="icon" href="/favicon.ico" />
         <Script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></Script>
       </Head>
-      <Navbar user={user} logout={logout} heading="HomePage"/>
+      <Navbar user={user} logout={logout} heading="Home"/>
    
     {/* <div className="flex flex-col md:flex-row items-center justify-between mt-20 md:mt-20 h-[80vh]">
          <div className="flex flex-col ml-4 md:ml-52 mr-4 md:mr-16 mt-4 md:mt-28 my-4">

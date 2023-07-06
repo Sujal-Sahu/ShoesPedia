@@ -5,7 +5,13 @@ import Navbar from 'Components/Navbar';
 
 const cart = (props) => {
   let {addcart,removecart,clearcart,cart,subtotal,user,logout}=props;
-  
+  const [tempsubtotal,settempsubtotal]=useState();
+  useEffect(()=>{
+    console.log(tempsubtotal)
+     if(subtotal){
+      settempsubtotal(subtotal);
+     }
+  },[subtotal])
   return (
     <>
      <Navbar user={user} logout={logout} heading="Cart"/>
@@ -50,7 +56,7 @@ const cart = (props) => {
         <div className="mb-2 flex justify-between">
           <p className="text-gray-700">Subtotal</p>
           <p className="text-gray-700">
-          ₹{subtotal}</p>
+          ₹{tempsubtotal?tempsubtotal:0}</p>
         </div>
         <div className="flex justify-between">
           <p className="text-gray-700">Shipping</p>
@@ -68,7 +74,7 @@ const cart = (props) => {
           <Link href="/checkout">
         <button disabled={Object.keys(cart).length===0} className="disabled:bg-blue-300 mt-6 mx-1 rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600" style={{width:"56%"}}>Check out</button>
         </Link>
-        <button disabled={Object.keys(cart).length===0} className="disabled:bg-blue-300 mt-6 mx-1 rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600" style={{width:"38%"}} onClick={clearcart}>Clear Cart</button>
+        <button disabled={Object.keys(cart).length===0} className="disabled:bg-blue-300 mt-6 mx-1 rounded-md bg-blue-500 py-1.5 font-medium text-blue-50 hover:bg-blue-600" style={{width:"38%"}} onClick={(event)=>{event.preventDefault();settempsubtotal(0);clearcart()}}>Clear Cart</button>
         </div>
       </div>
     </div>
