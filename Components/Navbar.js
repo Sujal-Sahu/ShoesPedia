@@ -87,9 +87,16 @@ const Navbar = (props) => {
                     <li>
                         <a className="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
                             href="/">
-                            <span className="select-none">Homepage</span>
+                            <span className="select-none">Home</span>
                         </a>
                     </li>
+                </ul>
+            </div>
+            <div className="px-4 pb-6">
+                <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">
+                    Shoes
+                </h3>
+                <ul className="mb-8 text-sm font-medium">
                     
                     <li>
                         <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
@@ -127,25 +134,6 @@ const Navbar = (props) => {
                             <span className="select-none">Puma</span>
                         </a>
                     </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
-                            href="/cart">
-                            <span className="select-none">Cart</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
-                            href="/about">
-                            <span className="select-none">About</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
-                            href="/contact">
-                            <span className="select-none">Contact</span>
-                        </a>
-                    </li>
-                    
                 </ul>
             </div>
             {/* <!-- navigation group end--> */}
@@ -168,6 +156,32 @@ const Navbar = (props) => {
                             <span className="select-none">Privacy policy</span>
                         </a>
                     </li>
+                </ul>
+            </div>
+            <div className="px-4 pb-6">
+                <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">
+                    Others
+                </h3>
+                <ul className="mb-8 text-sm font-medium">
+                    <li>
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                            href="/cart">
+                            <span className="select-none">Cart</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                            href="/about">
+                            <span className="select-none">About</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                            href="/contact">
+                            <span className="select-none">Contact</span>
+                        </a>
+                    </li>
+                    
                 </ul>
             </div>
 

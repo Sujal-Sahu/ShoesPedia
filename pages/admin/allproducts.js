@@ -7,6 +7,7 @@ import ProductTable from "../../Components/admin/Productstablerendering";
 import Product from "models/Product";
 import mongoose from "mongoose";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 const allproducts = ({products}) => {
   const router=useRouter();
