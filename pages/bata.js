@@ -34,8 +34,26 @@ const bata = ({user,logout,addcart,removecart,clearcart,cart,subtotal,products,c
         let newfilteredProducts = {};
         let colorsarray=Object.keys(checkedcolors).filter(key => checkedcolors[key]);
         let sizesarray=Object.keys(checkedsizes).filter(key => checkedsizes[key]);
-        console.log(colorsarray);
-        console.log(sizesarray);
+        if(colorsarray.length===0 && sizesarray.length===0){
+             newfilteredProducts=products;
+        }
+        else if(colorsarray.length!==0 && sizesarray.length===0){
+          Object.keys(products).map((k)=>{
+            if(products[k].color.some(item=>colorsarray.includes(item))){
+                       newfilteredProducts[k]={};
+                       newfilteredProducts[k]=products[k];
+            }
+       })
+      }
+       else if(colorsarray.length==0 && sizesarray.length!==0){
+        Object.keys(products).map((k)=>{
+                 if(products[k].size.some(item=>sizesarray.includes(item.toString()))){
+                     newfilteredProducts[k]={};
+                     newfilteredProducts[k]=products[k];
+                 }
+     })
+       }
+       else{
         Object.keys(products).map((k)=>{
              if(products[k].color.some(item=>colorsarray.includes(item))){
                     if(products[k].size.some(item=>sizesarray.includes(item.toString()))){
@@ -44,6 +62,7 @@ const bata = ({user,logout,addcart,removecart,clearcart,cart,subtotal,products,c
                     }
              }
         })
+      }
         setfilteredProducts(newfilteredProducts);
   }
   return (

@@ -51,7 +51,7 @@ const imagegallery = ({user,logout}) => {
                </div>
            </section>
            <section className="Rebookpagephotos">
-               <div className="text-center mt-20 text-3xl font-bold"><h1 className="">2. Rebook/Puma/Adidas/Campus/Nike/Bata Page</h1></div>
+               <div className="text-center mt-20 text-3xl font-bold"><h1 className="">2. Rebook/ Puma/ Adidas/ Campus/ Nike/ Bata Page</h1></div>
                <div className="subheading text-center">(All the Pages have a Almost Same UI)</div>
                <div className="flex flex-col items-center justify-center">
                 <div className="img mt-8">
