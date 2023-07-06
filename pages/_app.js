@@ -53,20 +53,20 @@ export default function App({ Component, pageProps }) {
       }
       setsubtotal(subt);
   }
-  const addcart=(itemCode,qty,name,size,price,variant)=>{
+  const addcart=(itemCode,qty,name,size,price,img,category,variant)=>{
       let mycart=cart;
       if(itemCode in mycart){
          mycart[itemCode].qty=mycart[itemCode].qty+qty;
       }
       else{
-        mycart[itemCode]={qty:1,price,name,size,variant};
+        mycart[itemCode]={qty:1,price,name,size,img,category,variant};
       }
       console.log(mycart);
       setcart(mycart);
       savecart(mycart);
       router.push(`${process.env.NEXT_PUBLIC_HOST}/cart`);
   }
-  const removecart=(itemCode,qty,price,name,size,variant)=>{
+  const removecart=(itemCode,qty,price,name,size,img,category,variant)=>{
      let mycart=cart;
      console.log("Sujal");
      if(itemCode in mycart){
@@ -83,9 +83,9 @@ export default function App({ Component, pageProps }) {
     setcart({});
     savecart({});
   }
-  const buynow=(itemCode,qty,name,size,price,variant)=>{
+  const buynow=(itemCode,qty,name,size,price,img,category,variant)=>{
         let mycart={};
-        mycart[itemCode]={qty:1,price,name,size,variant};
+        mycart[itemCode]={qty:1,price,name,size,img,category,variant};
         setcart(mycart);
         savecart(mycart);
         router.push('/checkout');

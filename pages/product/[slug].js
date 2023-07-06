@@ -154,8 +154,8 @@ theme="light"
           {product.availableQty>0 && <span className="title-font font-medium text-2xl text-gray-900">₹{product.price}</span>}
           {product.availableQty<=0 && <span className="title-font font-medium text-2xl text-gray-900">Out of Stock!!</span>}
           <div className="flex">
-          <button disabled={product.availableQty<=0} className="disabled:bg-indigo-300 flex ml-auto text-white bg-indigo-500 border-0 mx-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"  onClick={()=>{buynow(product.slug,1,product.title,product.size,product.price,product.color)}}>Buy Now</button>
-          <button disabled={product.availableQty<=0} className="disabled:bg-indigo-300 flex ml-auto text-white bg-indigo-500 border-0 mx-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"  onClick={(event)=>{event.preventDefault();addcart(product._id,1,product.title,product.size,product.price,product.color)}}>Add to Cart</button>
+          <button disabled={product.availableQty<=0} className="disabled:bg-indigo-300 flex ml-auto text-white bg-indigo-500 border-0 mx-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"  onClick={()=>{buynow(product.slug,1,product.title,product.size,product.price,product.img,product.category,product.color)}}>Buy Now</button>
+          <button disabled={product.availableQty<=0} className="disabled:bg-indigo-300 flex ml-auto text-white bg-indigo-500 border-0 mx-2 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded"  onClick={(event)=>{event.preventDefault();addcart(product._id,1,product.title,product.size,product.price,product.img,product.category,product.color)}}>Add to Cart</button>
           </div>
         </div>
         <div className='my-3 flex-row items-center justify-between'>

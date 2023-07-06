@@ -27,11 +27,11 @@ const cart = (props) => {
         </div>}
        {Object.keys(cart).map((k)=>{
         return <div className="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start" key={k}>
-          <img src="https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" alt="product-image" className="w-full rounded-lg sm:w-40" />
+          <img src={cart[k].img} alt="product-image" className="w-full rounded-lg sm:w-40" />
           <div className="sm:ml-4 sm:flex sm:w-full sm:justify-between">
             <div className="mt-3 sm:mt-0">
               <h2 className="text-lg font-bold text-gray-900">{cart[k].name}</h2>
-              <p className="mt-1 text-xs text-gray-700">36EU - 4US</p>
+              <p className="mt-1 text-xs text-gray-700">{cart[k].category}</p>
             </div>
             <div className="mt-4 flex justify-between sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
               <div className="flex items-center border-gray-100">
