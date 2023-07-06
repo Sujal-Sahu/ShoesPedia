@@ -86,8 +86,8 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
 		<span style={{margin:"0px"}}>Puma</span>
     </a>
 </div>
-<section className="py-10 bg-indigo-50 flex flex-row justify-center">
-  <div className='w-1/4 mx-8 mt-4'>
+<section className="py-10 bg-indigo-50 flex flex-col md:flex-row justify-center">
+  <div className='w-full md:w-1/4 mx-8 mt-4'>
     <div className='flex flex-row items-center justify-between'>
   <h1 className="text-3xl font-bold text-gray-800">Filters</h1>
   <Filter/>
@@ -138,7 +138,7 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
           <h2 className="text-slate-700">{products[k].title}</h2>
           <p className="mt-1 text-sm text-slate-400">{products[k].category}</p>
 
-          <div className="mt-3 flex items-end justify-between">
+          <div className="mt-3 flex flex-col xl:flex-row items-start xl:items-end justify-between">
               <p className="text-lg font-bold text-blue-500">₹{products[k].price}</p>
             <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600"  onClick={(event)=>{event.preventDefault();addcart(products[k]._id,1,products[k].title,10,499,"white")}}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">

@@ -61,18 +61,18 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
          </div>     
     </div> */}
     <div className="flex flex-col md:flex-row items-center justify-between mt-40 md:mt-20 h-[80vh]">
-         <div className="flex flex-col w-full md:w-2/3 md:h-full px-8 md:px-32 items-center md:items-start justify-center">
+         <div className="flex flex-col w-full md:w-2/3 h-full md:h-full px-8 md:px-32 items-center md:items-start justify-center">
               <div className={`${styles.slide_in}`}>
                  <h1 className='text-black-700 text-2xl md:text-5xl mb-4 md:mb-12 font-bold'>ShoesPedia</h1>
               </div>
-              <div className={`text-black-700 md:mr-20 ${styles.slide_in} sm:text-center md:text-left lg:text-left`}>
+              <div className={`text-black-700 md:mr-20 ${styles.slide_in} text-center sm:text-left`}>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi quas veritatis eaque, quis vel quidem. Suscipit totam aliquid, optio beatae alias doloribus perspiciatis. Reprehenderit laboriosam esse, odit cupiditate id accusamus cumque dicta.
               </div>
               <div className={styles.slide_in}>
               <button className='flex items-center space-x-1.5 rounded-lg bg-blue-700 px-4 py-2 text-white duration-100 hover:bg-blue-800 mt-12' onClick={() => scrollToCollections()}>View Collections</button>
               </div>
          </div>
-         <div className={`${styles.slide_in} w-full md:w-1/3 h-full flex flex-col items-center md:items-start justify-center pl-24 md:pl-0`}>
+         <div className={`${styles.slide_in} w-full md:w-1/3 h-full md:h-full flex flex-col items-center md:items-start justify-center pl-24 md:pl-0`}>
           <Image src={bgimg} width={500} height={500}/>
          </div>     
     </div>
