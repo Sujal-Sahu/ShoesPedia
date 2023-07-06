@@ -147,13 +147,17 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
               <button className="text-sm">Add to cart</button>
             </div>
           </div>
-          <div className="mt-3 flex items-end">
-              <h2 className='mx-3'>Size : </h2>
+          <div className="mt-3 flex flex-row flex-wrap items-center">
+              <h2 className=''>Size : </h2>
+              <div className="flex flex-row flex-wrap">
               {products[k].size.map((c)=>{return <span className='mx-2' key={c}>{c}</span>})}
+              </div>
           </div>
-          <div className="mt-3 flex items-center">
-              <h2 className='mx-3'>Color : </h2>
+          <div className="mt-3 flex flex-row flex-wrap items-center">
+              <h2 className=''>Color : </h2>
+              <div className="flex flex-row flex-wrap">
               {products[k].color.map((c)=>{return <span className={`mx-2 ${styles.circle}`} style={{backgroundColor:c}} key={c}></span>})}
+              </div>
           </div>
         </div>
         </a></Link>

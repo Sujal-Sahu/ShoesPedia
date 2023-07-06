@@ -63,10 +63,12 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
     <div className="flex flex-col md:flex-row items-center justify-between mt-40 md:mt-20 h-[80vh]">
          <div className="flex flex-col w-full md:w-2/3 h-full md:h-full px-8 md:px-32 items-center md:items-start justify-center">
               <div className={`${styles.slide_in}`}>
-                 <h1 className='text-black-700 text-2xl md:text-5xl mb-4 md:mb-12 font-bold'>ShoesPedia</h1>
+                 <h1 className='text-black-700 text-2xl md:text-4xl lg:text-5xl mb-4 md:mb-12 font-bold'>ShoesPedia</h1>
               </div>
-              <div className={`text-black-700 md:mr-20 ${styles.slide_in} text-center sm:text-left`}>
+              <div className={`text-black-700 lg:mr-20 ${styles.slide_in}`}>
+                <p className='sm:text-left'>
                 Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi quas veritatis eaque, quis vel quidem. Suscipit totam aliquid, optio beatae alias doloribus perspiciatis. Reprehenderit laboriosam esse, odit cupiditate id accusamus cumque dicta.
+                </p>
               </div>
               <div className={styles.slide_in}>
               <button className='flex items-center space-x-1.5 rounded-lg bg-blue-700 px-4 py-2 text-white duration-100 hover:bg-blue-800 mt-12' onClick={() => scrollToCollections()}>View Collections</button>
