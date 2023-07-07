@@ -3,6 +3,7 @@ import Link from 'next/link'
 import { useRouter } from 'next/router';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import styles from '../styles/signup.module.css'
 
 const signup = () => {
   const router=useRouter();

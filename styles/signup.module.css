@@ -1,0 +1,10 @@
+.suj{
+    padding: 0 9rem;
+  }
+
+  @media screen and (max-width: 761px) {
+    /* CSS styles for screens with a maximum width of 761px */
+    .suj{
+        padding: 0 1rem;
+    }
+  }
