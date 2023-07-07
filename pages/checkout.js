@@ -143,7 +143,7 @@ theme="light"
 />
       {/* <div class="h-screen grid grid-cols-3"> */}
       <div class="h-screen flex flex-col md:flex-row">
-        <div class={`${styles.suj} w-full md:w-2/3 bg-indigo-50 space-y-8 px-12`}>
+        <div class={`${styles.suj} w-full md:w-2/3 bg-indigo-50 space-y-8 ${styles.suju}`}>
             <div class="mt-8 p-4 relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md">
                 <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto sm:pb-0">
                     <div class="text-yellow-500">
