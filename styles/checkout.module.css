@@ -1,0 +1,17 @@
+.suj{
+    order:1
+}
+
+.sujal{
+    order:2
+}
+
+  @media screen and (max-width: 761px) {
+    /* CSS styles for screens with a maximum width of 761px */
+    .suj{
+        order:2
+    }
+    .sujal{
+        order:1
+    }
+  }

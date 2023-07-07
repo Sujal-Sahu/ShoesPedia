@@ -5,6 +5,7 @@ import Script from 'next/script';
 import 'react-toastify/dist/ReactToastify.css';
 import Navbar from 'Components/Navbar';
 import { useRouter } from 'next/router';
+import styles from '../styles/checkout.module.css'
 
 const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
     const router=useRouter();
@@ -140,8 +141,9 @@ draggable
 pauseOnHover
 theme="light"
 />
-      <div class="h-screen grid grid-cols-3">
-        <div class="lg:col-span-2 col-span-3 bg-indigo-50 space-y-8 px-12">
+      {/* <div class="h-screen grid grid-cols-3"> */}
+      <div class="h-screen flex flex-col md:flex-row">
+        <div class={`${styles.suj} w-full md:w-2/3 bg-indigo-50 space-y-8 px-12`}>
             <div class="mt-8 p-4 relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md">
                 <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto sm:pb-0">
                     <div class="text-yellow-500">
@@ -166,13 +168,13 @@ theme="light"
                                 <input name="name" class="focus:outline-none px-3" placeholder="Try Odinsson" value={name} onChange={(event)=>{event.preventDefault();setname(event.target.value)}} required=""/>
                             </label>
                             
-                            <label class="inline-flex border-b border-gray-200 h-12 py-3 items-center w-1/2">
-                                <span class="text-right px-2">Phone</span>
-                                <input name="phone" type="phone" class="focus:outline-none px-3 w-3/4" placeholder="Your 10 digit Phone Number" value={phone} onChange={(event)=>{event.preventDefault();setphone(event.target.value)}} required=""/>
-                            </label>
-                            <label class="inline-flex border-b border-gray-200 h-12 py-3 items-center w-1/2">
+                            <label className="inline-flex border-b border-gray-200 h-12 py-3 items-center w-full md:w-1/2">
+              <span className="text-right px-2">Phone</span>
+              <input name="phone" type="phone" placeholder="Your 10 digit Phone Number" value={phone} onChange={(event) => { event.preventDefault(); setphone(event.target.value) }} required="" />
+            </label>
+            <label className="inline-flex border-b border-gray-200 h-12 py-3 items-center md:w-1/2 w-full">
                                 <span class="text-right px-2">Email</span>
-                                <input name="email" type="email" class="focus:outline-none px-3" placeholder="try@example.com" value={email} required=""/>
+                                <input name="email" type="email" placeholder="try@example.com" value={email} required=""/>
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">Address</span>
@@ -240,7 +242,7 @@ theme="light"
                 Pay ₹{subtotal}
             </button>
         </div>
-        <div class="col-span-1 bg-white lg:block hidden">
+        <div class={`${styles.sujal} w-full md:w-1/3 bg-white`}>
             <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">Order Summary</h1>
             <ul class="py-6 border-b space-y-6 px-8">
                 {Object.keys(cart).map((k)=>{
