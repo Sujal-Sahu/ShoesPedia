@@ -124,8 +124,12 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
     <div>
         <Head>
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
-        <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} onload="onScriptLoad();" crossorigin="anonymous">
-        </Script>
+        {/* <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} onload="onScriptLoad();" crossorigin="anonymous"> 
+        </Script>*/}
+        <Script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=YOUR_COMPONENTS"></Script>
+        <Script>
+
+</Script>
         </Head>
         <Navbar user={user} logout={logout} heading="Cart"/>
         <div className="h-20"></div>
@@ -238,7 +242,7 @@ theme="light"
                     </fieldset>
                 </section>
             </div>
-            <button disabled={disabled} className="disabled:bg-blue-300 submit-button px-4 py-3 rounded-full bg-blue-700 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors" onClick={intiatePayment}>
+            <button disabled={disabled} id="paypal-button-container" className="disabled:bg-blue-300 submit-button px-4 py-3 rounded-full bg-blue-700 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors" onClick={intiatePayment}>
                 Pay ₹{subtotal}
             </button>
         </div>

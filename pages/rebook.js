@@ -161,7 +161,7 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
               <p className="text-lg font-bold text-blue-500">₹{products[k].price}</p>
             <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600"  onClick={(event)=>{event.preventDefault();addcart(products[k]._id,1,products[k].title,10,499,products[k].img,products[k].category,"white")}}>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
-                <path strokeLinecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
               </svg>
               <button className="text-sm">Add to cart</button>
             </div>
@@ -185,8 +185,8 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
     </div>
 </section>
 <div className="recommend-heading mx-12 my-4">
-    <h1 class="sm:text-3xl text-2xl font-medium title-font m-2 text-gray-900 dark:text-gray-100 aos-init aos-animate" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">Bestselling Products</h1>
-      <div class="h-1 w-20 bg-pink-500 rounded"></div>
+    <h1 className="sm:text-3xl text-2xl font-medium title-font m-2 text-gray-900 dark:text-gray-100 aos-init aos-animate" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">Bestselling Products</h1>
+      <div className="h-1 w-20 bg-pink-500 rounded"></div>
     </div>
     <Recommendproducts products={products}/>
        <Footer/>

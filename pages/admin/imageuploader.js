@@ -42,6 +42,8 @@ const srcset2=(image)=>{
       console.log(imageURL);
       const imgElement = document.createElement('img');
       imgElement.src = imageURL;
+      imgElement.width=200;
+      imgElement.height=200;
       imgElement.alt="Uploaded image"
       
       // Append the image element to a container in your UI
@@ -130,8 +132,8 @@ const itemData = [
       <Grid item xs={12} lg={12}>
         <BaseCard title="Image Uploader">
         <MyUploader/>
-          <div className="flex" id="imageContainer">
-            {images.map((item) => (
+          <div className="flex flex-wrap" id="imageContainer">
+            {images && images.map((item) => (
                 srcset2(item.filename)
             ))}
             </div>
