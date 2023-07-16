@@ -117,21 +117,8 @@
         padding: 0rem 8rem;
     }
   }
-  /* .item_col .collectionimages{
-    animation: zoomInUp 0.5s ease-in-out forwards;
-    transform-origin: center bottom;
-    opacity: 0;
- }
-
-
-  
-@keyframes zoomInUp {
-    0% {
-        transform: scale(0.5) translateZ(-100px);
-        opacity: 0;
-      }
-      100% {
-        transform: scale(1) translateZ(0);
-        opacity: 1;
-      }
-  } */
+  @media only screen and (min-width:325px){
+  .marginstyling{
+        margin: auto;
+  }
+}

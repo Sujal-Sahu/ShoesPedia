@@ -105,7 +105,7 @@ const nike = ({user,logout,addcart,removecart,clearcart,cart,subtotal,products,c
     </a>
 </div>
 <section className="py-10 bg-indigo-50 flex flex-col md:flex-row justify-center">
-  <div className='w-full md:w-1/4 mx-8 mt-4'>
+  <div className='md:w-1/4 mx-8 mt-4'>
     <div className='flex flex-row items-center justify-between'>
   <h1 className="text-3xl font-bold text-gray-800">Filters</h1>
   <Filter/>
@@ -143,7 +143,7 @@ const nike = ({user,logout,addcart,removecart,clearcart,cart,subtotal,products,c
   </div>
     <button onClick={Applyfilters} className="text-sm rounded-lg bg-blue-600 px-4 py-2 text-white duration-100 hover:bg-blue-800 my-8">Apply Filters</button>
   </div>
-  <div className="mx-auto grid max-w-6xl  grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+  <div className={`${styles.marginstyling} grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}>
     {Object.keys(filteredProducts).map((k)=>{
     return <article key={products[k]._id} className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
       <Link href={`/product/${products[k].slug}`}><a>

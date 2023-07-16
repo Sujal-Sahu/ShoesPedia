@@ -44,13 +44,13 @@ const Footer = () => {
                 <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href={`${process.env.NEXT_PUBLIC_HOST}/nike`}>Nike shoes</a>
               </li>
               <li>
-                <Link className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href={`${process.env.NEXT_PUBLIC_HOST}/bata`}>Bata shoes</Link>
+                <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href={`${process.env.NEXT_PUBLIC_HOST}/bata`}>Bata shoes</a>
               </li>
               <li>
-                <Link className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href={`${process.env.NEXT_PUBLIC_HOST}/campus`}>Campus shoes</Link>
+                <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href={`${process.env.NEXT_PUBLIC_HOST}/campus`}>Campus shoes</a>
               </li>
               <li>
-                <Link className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href={`${process.env.NEXT_PUBLIC_HOST}/puma`}>Puma shoes</Link>
+                <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href={`${process.env.NEXT_PUBLIC_HOST}/puma`}>Puma shoes</a>
               </li>
             </ul>
           </div>
@@ -58,7 +58,7 @@ const Footer = () => {
             <span className="block uppercase text-blueGray-500 text-sm font-semibold mb-2">Other Resources</span>
             <ul className="list-unstyled">
               <li>
-                <Link className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-profile">MIT License</Link>
+                <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://github.com/creativetimofficial/notus-js/blob/main/LICENSE.md?ref=njs-profile">MIT License</a>
               </li>
               <li>
                 <a className="text-blueGray-600 hover:text-blueGray-800 font-semibold block pb-2 text-sm" href="https://creative-tim.com/terms?ref=njs-profile">Terms &amp; Conditions</a>
