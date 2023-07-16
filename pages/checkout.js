@@ -6,6 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Navbar from 'Components/Navbar';
 import { useRouter } from 'next/router';
 import styles from '../styles/checkout.module.css'
+import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
 const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
     const router=useRouter();
@@ -19,7 +20,7 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
   const [phone,setphone]=useState("");
   const [disabled, setdisabled] = useState(true);
   const [pinjson, setpinjson] = useState();
- 
+ const [sdkready, setSdkready] = useState(false)
   useEffect(()=>{
      const handlefetch=async()=>{
         const pins=await fetch(`${process.env.NEXT_PUBLIC_HOST}/api/pincode`);
@@ -43,6 +44,17 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
             router.push('/login?redirect=checkout');
         }
      }
+    //  const addPaypalScript=async()=>{
+    //     const clientId = process.env.PAYPAL_CLIENT_ID
+    //     const script=document.createElement('script');
+    //     script.type='text/javascript'
+    //     script.src=`https://www.paypal.com/sdk/js?client-id=${clientId}`
+    //     script.async=true
+    //     script.onload=()=>{
+    //         setSdkready(true);
+    //     }
+    //     document.body.appendChild(script);
+    //  }
      
      handlefetch();
   },[])
@@ -62,6 +74,7 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
             setstate('');
          }
   },[name,address,zip])
+  
   const intiatePayment=async()=>{
     let oid=Math.floor(Math.random()*Date.now());
     const data={cart,subtotal,oid,name,email,address,city,state,zip,country,cart,phone};
@@ -126,10 +139,6 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
         <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
         {/* <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} onload="onScriptLoad();" crossorigin="anonymous"> 
         </Script>*/}
-        <Script src="https://www.paypal.com/sdk/js?client-id=YOUR_CLIENT_ID&components=YOUR_COMPONENTS"></Script>
-        <Script>
-
-</Script>
         </Head>
         <Navbar user={user} logout={logout} heading="Cart"/>
         <div className="h-20"></div>
@@ -146,7 +155,7 @@ pauseOnHover
 theme="light"
 />
       {/* <div class="h-screen grid grid-cols-3"> */}
-      <div class="h-screen flex flex-col md:flex-row">
+      <div class="min-h-screen flex flex-col md:flex-row">
         <div class={`${styles.suj} w-full md:w-2/3 bg-indigo-50 space-y-8 ${styles.suju}`}>
             <div class="mt-8 p-4 relative flex flex-col sm:flex-row sm:items-center bg-white shadow rounded-md">
                 <div class="flex flex-row items-center border-b sm:border-b-0 w-full sm:w-auto sm:pb-0">
@@ -169,32 +178,32 @@ theme="light"
                         <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">Name</span>
-                                <input name="name" class="focus:outline-none px-3" placeholder="Try Odinsson" value={name} onChange={(event)=>{event.preventDefault();setname(event.target.value)}} required=""/>
+                                <input name="name" class="focus:outline-none px-3 w-full" placeholder="Try Odinsson" value={name} onChange={(event)=>{event.preventDefault();setname(event.target.value)}} required=""/>
                             </label>
                             
                             <label className="inline-flex border-b border-gray-200 h-12 py-3 items-center w-full md:w-1/2">
               <span className="text-right px-2">Phone</span>
-              <input name="phone" type="phone" placeholder="Your 10 digit Phone Number" value={phone} onChange={(event) => { event.preventDefault(); setphone(event.target.value) }} required="" />
+              <input name="phone" type="phone" class="focus:outline-none w-full" placeholder="Your 10 digit Phone Number" value={phone} onChange={(event) => { event.preventDefault(); setphone(event.target.value) }} required="" />
             </label>
             <label className="inline-flex border-b border-gray-200 h-12 py-3 items-center md:w-1/2 w-full">
                                 <span class="text-right px-2">Email</span>
-                                <input name="email" type="email" placeholder="try@example.com" value={email} required=""/>
+                                <input name="email" type="email" placeholder="try@example.com" class="focus:outline-none w-full"  value={email} required=""/>
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">Address</span>
-                                <input name="address" class="focus:outline-none px-3" placeholder="10 Street XYZ 654" value={address} onChange={(event)=>{event.preventDefault();setaddress(event.target.value)}}/>
+                                <input name="address" class="focus:outline-none px-3 w-full"  placeholder="10 Street XYZ 654" value={address} onChange={(event)=>{event.preventDefault();setaddress(event.target.value)}}/>
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">City</span>
-                                <input name="city" class="focus:outline-none px-3" placeholder="San Francisco" value={city}/>
+                                <input name="city" class="focus:outline-none px-3 w-full" placeholder="San Francisco" value={city}/>
                             </label>
                             <label class="inline-flex w-2/4 border-gray-200 py-3">
                                 <span class="text-right px-2">State</span>
-                                <input name="state" class="focus:outline-none px-3" placeholder="CA" value={state}/>
+                                <input name="state" class="focus:outline-none px-3 w-full" placeholder="CA" value={state}/>
                             </label>
                             <label class="xl:w-1/4 xl:inline-flex py-3 items-center flex xl:border-none border-t border-gray-200 py-3">
                                 <span class="text-right px-2 xl:px-0 xl:text-none">ZIP</span>
-                                <input name="postal_code" class="focus:outline-none px-3" placeholder="313001" value={zip} onChange={(event)=>{event.preventDefault();setzip(event.target.value)}}/>
+                                <input name="postal_code" class="focus:outline-none px-3 w-full" placeholder="313001" value={zip} onChange={(event)=>{event.preventDefault();setzip(event.target.value)}}/>
                             </label>
                             <label class="flex border-t border-gray-200 h-12 py-3 items-center select relative">
                                 <span class="text-right px-2">Country</span>
@@ -236,15 +245,20 @@ theme="light"
                     <h2 class="uppercase tracking-wide text-lg font-semibold text-gray-700 my-2">Payment Gateway</h2>
                     <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">
                         <label class="flex border-b border-gray-200 h-12 py-3 items-center">
-                            <span class="text-right px-2 font-bold">Paytm</span>
+                            <span class="text-right px-2 font-bold">PayPal</span>
                             {/*<input name="card" class="focus:outline-none px-3 w-full" placeholder="Card number MM/YY CVC" required=""/> */}
                         </label>
                     </fieldset>
                 </section>
             </div>
-            <button disabled={disabled} id="paypal-button-container" className="disabled:bg-blue-300 submit-button px-4 py-3 rounded-full bg-blue-700 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors" onClick={intiatePayment}>
+            {/* <button disabled={disabled} id="paypal-button-container" className="disabled:bg-blue-300 submit-button px-4 py-3 rounded-full bg-blue-700 text-white focus:ring focus:outline-none w-full text-xl font-semibold transition-colors" onClick={intiatePayment}>
                 Pay ₹{subtotal}
-            </button>
+            </button> */}
+            <PayPalScriptProvider options={{ 
+                clientId: process.env.NEXT_PUBLIC_PAYPAL_CLIENT_ID}}>
+            <PayPalButtons style={{ layout: "horizontal",color:"blue"}} />
+        </PayPalScriptProvider>
+
         </div>
         <div class={`${styles.sujal} w-full md:w-1/3 bg-white`}>
             <h1 class="py-6 border-b-2 text-xl text-gray-600 px-8">Order Summary</h1>

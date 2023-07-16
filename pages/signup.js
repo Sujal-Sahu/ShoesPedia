@@ -88,7 +88,7 @@ const signup = () => {
   return (
     <div>
       <link rel="stylesheet" href="https://kit-pro.fontawesome.com/releases/v5.15.1/css/pro.min.css" />
-<div class="h-screen bg-indigo-50">
+<div class="min-h-screen bg-indigo-50">
 <ToastContainer
 position="top-left"
 autoClose={3000}
@@ -106,36 +106,36 @@ theme="light"
         <div class="rounded-md pt-28">
                 <form id="payment-form" method="POST" action="">
                     <section>
-                        <h2 class="uppercase text-center tracking-wide text-lg font-semibold text-gray-700 my-2">Sign Up For an Account</h2>
                         <fieldset class="mb-3 bg-white shadow-lg rounded text-gray-600">
+                        <h2 class="text-center tracking-wide my-4 font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">Sign Up for account Here</h2>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">Name</span>
-                                <input name="name" placeholder="Try Odinsson" value={name} onChange={(event)=>{event.preventDefault();setname(event.target.value)}} required=""/>
+                                <input name="name" placeholder="Try Odinsson" value={name} className='focus:outline-none w-full' onChange={(event)=>{event.preventDefault();setname(event.target.value)}} required=""/>
                             </label>
                             
                             <label className="inline-flex border-b border-gray-200 h-12 py-3 items-center w-full md:w-1/2">
               <span className="text-right px-2">Phone</span>
-              <input name="phone" type="phone" placeholder="Your 10 digit Phone Number" value={phone} onChange={(event) => { event.preventDefault(); setphone(event.target.value) }} required="" />
+              <input name="phone" type="phone" placeholder="Your 10 digit Phone Number" className='focus:outline-none w-full' value={phone} onChange={(event) => { event.preventDefault(); setphone(event.target.value) }} required="" />
             </label>
             <label className="inline-flex border-b border-gray-200 h-12 py-3 items-center md:w-1/2 w-full">
                                 <span class="text-right px-2">Email</span>
-                                <input name="email" type="email" placeholder="try@example.com" value={email} onChange={(event) => { event.preventDefault(); setemail(event.target.value) }} required=""/>
+                                <input name="email" type="email" placeholder="try@example.com" value={email} className='focus:outline-none w-full' onChange={(event) => { event.preventDefault(); setemail(event.target.value) }} required=""/>
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">Address</span>
-                                <input name="address" placeholder="10 Street XYZ 654" value={address} onChange={(event)=>{event.preventDefault();setaddress(event.target.value)}}/>
+                                <input name="address" placeholder="10 Street XYZ 654" value={address} className='focus:outline-none w-full' onChange={(event)=>{event.preventDefault();setaddress(event.target.value)}}/>
                             </label>
                             <label class="flex border-b border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2">City</span>
-                                <input name="city" placeholder="San Francisco" value={city}/>
+                                <input name="city" placeholder="San Francisco" value={city} className='focus:outline-none w-full'/>
                             </label>
                             <label class="inline-flex w-2/4 border-gray-200 py-3">
                                 <span class="text-right px-2">State</span>
-                                <input name="state" placeholder="CA" value={state}/>
+                                <input name="state" placeholder="CA" value={state} className='focus:outline-none w-full'/>
                             </label>
                             <label class="xl:w-1/4 xl:inline-flex py-3 items-center flex xl:border-none border-t border-gray-200 py-3">
                                 <span class="text-right px-2 xl:px-0 xl:text-none">ZIP</span>
-                                <input name="postal_code" placeholder="313001" value={zip} onChange={(event)=>{event.preventDefault();setzip(event.target.value)}}/>
+                                <input name="postal_code" placeholder="313001" value={zip} onChange={(event)=>{event.preventDefault();setzip(event.target.value)}} className='focus:outline-none w-full'/>
                             </label>
                            
                             <label class="flex border-t border-gray-200 h-12 py-3 items-center select relative">
@@ -171,7 +171,7 @@ theme="light"
                             </label>
                             <label class="flex border-t border-gray-200 h-12 py-3 items-center">
                                 <span class="text-right px-2 xl:px-0 xl:text-none">Password</span>
-                                <input name="postal_code" placeholder="123456" value={password} onChange={(event)=>{event.preventDefault();setpassword(event.target.value)}}/>
+                                <input name="postal_code" placeholder="123456" value={password} onChange={(event)=>{event.preventDefault();setpassword(event.target.value)}} className='focus:outline-none w-full' />
                             </label>
                         </fieldset>
                     </section>

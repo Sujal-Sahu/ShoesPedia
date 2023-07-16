@@ -8,7 +8,7 @@ import { useRouter } from 'next/router'
 import { faL } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = (props) => {
-    const router=useRouter();
+    const router=useRouter();   
     const [dropdown,setdropdown]=useState(false);
     const [showcart,setshowcart]=useState(true);
     // useEffect(()=>{
@@ -39,7 +39,7 @@ const Navbar = (props) => {
        <nav id="navbar" className="flex w-[100vw] z-40 flex-row justify-end bg-gray-700 px-4 sm:justify-between fixed left-0 top-0">
     <ul className={`${styles.breadcrumb} hidden flex-row items-center py-4 text-lg text-white sm:flex`}>
         <li className="inline">
-            <a href="/">ShoesPedia</a>
+            <a href="/" className="hover:text-[#bab6f5]">ShoesPedia</a>
         </li>
         <li className="inline">
             <span>{props.heading}</span>
@@ -85,7 +85,7 @@ const Navbar = (props) => {
                 </h3>
                 <ul className="mb-8 text-sm font-medium">
                     <li>
-                        <a className="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="active flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/">
                             <span className="select-none">Home</span>
                         </a>
@@ -99,37 +99,37 @@ const Navbar = (props) => {
                 <ul className="mb-8 text-sm font-medium">
                     
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/rebook">
                             <span className="select-none">Rebook</span>
                         </a>
                     </li>
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/adidas">
                             <span className="select-none">Adidas</span>
                         </a>
                     </li>
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/campus">
                             <span className="select-none">Campus</span>
                         </a>
                     </li>
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/bata">
                             <span className="select-none">Bata</span>
                         </a>
                     </li>
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/nike">
                             <span className="select-none">Nike</span>
                         </a>
                     </li>
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/puma">
                             <span className="select-none">Puma</span>
                         </a>
@@ -145,13 +145,13 @@ const Navbar = (props) => {
                 </h3>
                 <ul className="mb-8 text-sm font-medium">
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="#tc">
                             <span className="select-none">Terms and Condition</span>
                         </a>
                     </li>
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="#privacy">
                             <span className="select-none">Privacy policy</span>
                         </a>
@@ -164,19 +164,19 @@ const Navbar = (props) => {
                 </h3>
                 <ul className="mb-8 text-sm font-medium">
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/cart">
                             <span className="select-none">Cart</span>
                         </a>
                     </li>
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/about">
                             <span className="select-none">About</span>
                         </a>
                     </li>
                     <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600"
+                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-gray-50 hover:bg-gray-600 hover:text-white"
                             href="/contact">
                             <span className="select-none">Contact</span>
                         </a>
