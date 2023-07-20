@@ -36,7 +36,7 @@ const Navbar = (props) => {
         
       </Head>
        {/* Navbar start */}
-       <nav id="navbar" className="flex w-[100vw] z-40 flex-row justify-end bg-gray-700 px-4 sm:justify-between fixed left-0 top-0">
+       <nav id="navbar" className="flex w-full z-40 flex-row justify-end bg-gray-700 px-4 sm:justify-between fixed left-0 top-0">
     <ul className={`${styles.breadcrumb} hidden flex-row items-center py-4 text-lg text-white sm:flex`}>
         <li className="inline">
             <a href="/" className="hover:text-[#bab6f5]">ShoesPedia</a>

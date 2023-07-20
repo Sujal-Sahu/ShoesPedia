@@ -8,8 +8,10 @@ import Product from '/models/Product'
 import mongoose from 'mongoose'
 import styles from '../styles/index.module.css'
 import Link from 'next/link'
-import { Filter } from 'react-feather';
 import Recommendproducts from 'Components/Recommendproducts'
+import SubNavbar from 'Components/SubNavbar'
+import Filters from 'Components/Filters'
+import ProductsGrid from 'Components/ProductsGrid'
 const inter = Inter({ subsets: ['latin'] })
 
 const nike = ({user,logout,addcart,removecart,clearcart,cart,subtotal,products,colors,sizes}) => {
@@ -75,113 +77,10 @@ const nike = ({user,logout,addcart,removecart,clearcart,cart,subtotal,products,c
       </Head>
       <Navbar user={user} logout={logout} heading="Nike"/>
       <div className="h-20"></div>
-      <div className="pt-4 bg-white">
-<h1 className="text-center text-2xl font-bold text-gray-800">All Products</h1>
-</div>
-<div className="flex flex-wrap items-center  overflow-x-auto overflow-y-hidden py-10 justify-center   bg-white text-gray-800">
-	<a href="/rebook" className="flex items-center flex-shrink-0 px-5 py-3 space-x-2text-gray-600">
-		<img src="https://1000logos.net/wp-content/uploads/2017/05/Reebok-logo.png" style={{width: "30px",height: "20px"}}alt="Rebook-logo" />
-		<span>Rebook</span>
-    </a>
-	<a href="/adidas" className="flex items-center flex-shrink-0 px-5 py-3 space-x-2 rounded-t-lg text-gray-900">
-  <img src="https://1000logos.net/wp-content/uploads/2019/06/Adidas-Logo-1991.jpg" style={{width: "30px",height: "20px"}}alt="adidas-logo" />
-		<span style={{margin:"0px"}}>Adidas</span>
-    </a>
-	<a href="/nike" className="flex items-center flex-shrink-0 px-5 py-3 space-x-2  text-gray-600">
-  <img src="https://1000logos.net/wp-content/uploads/2021/11/Nike-Logo.png" style={{width: "30px",height: "20px"}}alt="Nike-logo" />
-		<span style={{margin:"0px"}}>Nike</span>
-    </a>
-	<a href="/bata" className="flex items-center flex-shrink-0 px-5 py-3 space-x-2  text-gray-600">
-  <img src="https://i.pinimg.com/originals/87/a4/91/87a49143283e71a1aaa67dc9502b7af1.png" style={{width: "30px",height: "29px"}}alt="Bata-logo" />
-		<span style={{margin:"0px"}}>Bata</span>
-    </a>
-    <a rel="noopener noreferrer" href="/campus" className="flex items-center flex-shrink-0 px-5 py-3 space-x-2  text-gray-600">
-  <img src="https://i.pinimg.com/736x/0e/7d/19/0e7d19a04dd482e56a436e69854943e2.jpg" style={{width: "30px",height: "34px"}}alt="Bata-logo" />
-		<span style={{margin:"0px"}}>Campus</span>
-    </a>
-	<a href="/puma" className="flex items-center flex-shrink-0 px-5 py-3 space-x-2  text-gray-600">
-  <img src="https://1000logos.net/wp-content/uploads/2017/05/PUMA-logo.jpg" style={{width: "30px",height: "20px"}}alt="Bata-logo" />
-		<span style={{margin:"0px"}}>Puma</span>
-    </a>
-</div>
+     <SubNavbar/>
 <section className="py-10 bg-indigo-50 flex flex-col md:flex-row justify-center">
-  <div className='md:w-1/4 mx-8 mt-4'>
-    <div className='flex flex-row items-center justify-between'>
-  <h1 className="text-3xl font-bold text-gray-800">Filters</h1>
-  <Filter/>
-  </div>
-  <div className="flex flex-col my-8 justify-between">
-  <h1 className="text-2xl font-bold text-gray-800">Colors</h1>
-  <hr></hr>
-  {colors && colors.map((c)=>{
-  return <div className="flex flex-row items-center" key={c}>
-        <input
-          type="checkbox"
-          name={c}
-          onChange={handleColorsCheckboxChange}
-        />
-        <label className='mx-2'>
-        {c}
-      </label>
-      </div>})}
-  </div>
-  <div className="flex flex-col justify-between">
-  <h1 className="text-2xl font-bold text-gray-800">Sizes</h1>
-  <hr></hr>
-  {sizes && sizes.map((s)=>{
-  return <div className="flex flex-row items-center" key={s}>
-        <input
-          type="checkbox"
-          name={s}
-          onChange={handleSizesCheckboxChange}
-        />
-        <label className='mx-2'>
-        {s}
-      </label>
-      </div>})}
-
-  </div>
-    <button onClick={Applyfilters} className="text-sm rounded-lg bg-blue-600 px-4 py-2 text-white duration-100 hover:bg-blue-800 my-8">Apply Filters</button>
-  </div>
-  <div className={`${styles.marginstyling} grid max-w-6xl grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4`}>
-    {Object.keys(filteredProducts).map((k)=>{
-    return <article key={products[k]._id} className="rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 ">
-      <Link href={`/product/${products[k].slug}`}><a>
-        <div className="relative flex items-end overflow-hidden rounded-xl">
-          <img src={products[k].img} alt="Hotel Photo" style={{width:"226px",height:"161px"}}/>
-          
-        </div>
-
-        <div className="mt-1 p-2">
-          <h2 className="text-slate-700">{products[k].title}</h2>
-          <p className="mt-1 text-sm text-slate-400">{products[k].category}</p>
-
-          <div className="mt-3 flex flex-col xl:flex-row items-start xl:items-end justify-between">
-              <p className="text-lg font-bold text-blue-500">₹{products[k].price}</p>
-            <div className="flex items-center space-x-1.5 rounded-lg bg-blue-500 px-4 py-1.5 text-white duration-100 hover:bg-blue-600"  onClick={(event)=>{event.preventDefault();addcart(products[k]._id,1,products[k].title,10,499,products[k].img,products[k].category,"white")}}>
-              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" className="h-4 w-4">
-                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-              </svg>
-              <button className="text-sm" style={{all:"unset",fontSize:"small"}}>Add to cart</button>
-            </div>
-          </div>
-          <div className="mt-3 flex flex-row flex-wrap items-center">
-              <h2 className=''>Size : </h2>
-              <div className="flex flex-row flex-wrap">
-              {products[k].size.map((c)=>{return <span className='mx-2' key={c}>{c}</span>})}
-              </div>
-          </div>
-          <div className="mt-3 flex flex-row flex-wrap items-center">
-              <h2 className=''>Color : </h2>
-              <div className="flex flex-row flex-wrap">
-              {products[k].color.map((c)=>{return <span className={`mx-2 ${styles.circle}`} style={{backgroundColor:c}} key={c}></span>})}
-              </div>
-          </div>
-        </div>
-        </a></Link>
-    </article>})}
-    
-    </div>
+<Filters colors={colors} sizes={sizes} Applyfilters={Applyfilters} handleColorsCheckboxChange={handleColorsCheckboxChange} handleSizesCheckboxChange={handleSizesCheckboxChange}/>
+   <ProductsGrid products={filteredProducts} addcart={addcart}/>
 </section>
 <div className="recommend-heading mx-12 my-4">
     <h1 className="sm:text-3xl text-2xl font-medium title-font m-2 text-gray-900 dark:text-gray-100 aos-init aos-animate" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">Bestselling Products</h1>

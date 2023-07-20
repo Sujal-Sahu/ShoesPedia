@@ -14,10 +14,16 @@ const Recommendproducts = ({products}) => {
     dots: false,
     infinite: true,
     speed: 500,
-    slidesToShow: 5,
+    slidesToShow: 6,
     slidesToScroll: 1,
     beforeChange: (current, next) => setCurrentSlide(next),
     responsive: [
+      {
+        breakpoint: 1800,
+        settings: {
+          slidesToShow: 5,
+        },
+      },
       {
         breakpoint: 1024,
         settings: {
@@ -57,7 +63,7 @@ const Recommendproducts = ({products}) => {
   };
 
   return (
-    <div>
+    <div className='mx-6 sm:!mx-0'>
       <Slider ref={sliderRef} {...settings}>
         {products &&
           Object.keys(products).map((k) => (

@@ -8,17 +8,15 @@ import Product from 'models/Product'
 import mongoose from 'mongoose'
 import styles from '../styles/index.module.css'
 import Recommendproducts from 'Components/Recommendproducts'
-import Carousel from 'better-react-carousel'
-import bgimg from '../assets/images/backgrounds/demo-removebg.png'
-import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
-import adidasimg from '../assets/images/backgrounds/adidasshoes.jpg'
-import bataimg from '../assets/images/backgrounds/batashoes.jpeg'
-import campusimg from '../assets/images/backgrounds/campusshoes.jpg'
-import nikeimg from '../assets/images/backgrounds/nikeshoes.jpg'
-import pumaimg from '../assets/images/backgrounds/pumashoes.jpg'
-import rebookimg from '../assets/images/backgrounds/rebookimages.jpg'
+import bgimg from '../assets/images/backgrounds/shoesdemo.jpg'
 import Link from 'next/link'
 import Script from 'next/script'
+import AnimatedText from '../Components/AnimatedText'
+import FeaturedLogos from 'Components/FeaturedLogos'
+import Rating from 'Components/Rating'
+import Features from 'Components/Features'
+import Collections from 'Components/Collections'
+import Services from 'Components/Services'
 const inter = Inter({ subsets: ['latin'] })
 
 
@@ -43,69 +41,40 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
         <Script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></Script>
       </Head>
       <Navbar user={user} logout={logout} heading="Home"/>
-   
-    <div className="flex flex-col md:flex-row items-center justify-between mt-40 md:mt-20 h-[80vh]">
-         <div className={`${styles.sujal} flex flex-col w-full md:w-2/3 h-full md:h-full items-center md:items-start justify-center`}>
-              <div className={`${styles.slide_in}`}>
-                 <h1 className='text-black-700 text-2xl md:text-4xl lg:text-5xl mb-4 md:mb-12 font-bold'>ShoesPedia</h1>
+      <div className="h-20"></div>
+      <div className={`w-full inline-block z-0 bg-white`}>
+      <div className='flex flex-col items-start 2xl:items-center 3xl:items-start justify-between w-full lg:flex-row px-6 py-16 bg-[#f4f8fd] sm:!px-12 md:!px-24 lg:!px-32 xl:!px-41 2xl:!px-56 3xl:!px-84'>      
+            <div className={`w-full flex flex-col lg:!w-1/2 ${styles.slide_in} 3xl:!w-[45%] py-20 lg:!py-0`}>
+              <AnimatedText text="Shoes for Every Style and Need" className='3xl:!text-8xl 2xl:!text-7xl xl:!text-6xl lg:!text-left 
+              lg:!text-5xl !text-center md:!text-6xl sm:!text-5xl !text-3xl
+              '/>
+              <p className='text-center lg:!text-left my-6 text-[#565656] sm:!text-2xl xl:!text-xl 2xl:!text-2xl 3xl:!text-3xl 3xl:my-12'>
+              Welcome to Shoespedia, your go-to destination for high-quality shoes that combine comfort, durability, and style to meet all your footwear needs.
+              </p>
+              <div className='flex items-center lg:self-start mt-2 self-center'>
+                <button  className='flex items-center bg-[#2270e2] text-white py-3 px-8 rounded-lg text-base font-semibold border border-solid border-transparent md:text-xl 2xl:!text-xl 3xl:!text-2xl hover:bg-black' onClick={scrollToCollections}>View Collections
+</button>
+                <Link href="/contact" target={'_blank'}><a className='ml-4 text-base font-medium capitalize text-black hover:underline md:text-xl 2xl:!text-xl 3xl:!text-2xl'>Contact</a></Link>
+
               </div>
-              <div className={`text-black-700 lg:mr-20 ${styles.suj} ${styles.slide_in}`}>
-                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi quas veritatis eaque, quis vel quidem. Suscipit totam aliquid, optio beatae alias doloribus perspiciatis. Reprehenderit laboriosam esse, odit cupiditate id accusamus cumque dicta.
-              </div>
-              <div className={styles.slide_in}>
-              <button className='flex items-center space-x-1.5 rounded-lg bg-blue-700 px-4 py-2 text-white duration-100 hover:bg-blue-800 mt-12' onClick={() => scrollToCollections()}>View Collections</button>
-              </div>
-         </div>
-         <div className={`${styles.slide_in} w-full md:w-1/3 h-full md:h-full flex flex-col items-center md:items-start justify-center pl-24 md:pl-0`}>
-          <Image src={bgimg} width={500} height={500}/>
-         </div>     
-    </div>
-<section className="shoes pt-4" ref={collectionsRef}>
-        <h1 className="commonh1 font-bold text-4xl text-center mt-20 mb-12">Collections</h1>
-        <div className={styles.row}>
-            <Link href='/rebook'><a><div className={`${styles.item_col} suj m-4`}>
-                <Image src={rebookimg} className={`${styles.collectionimages} subsuj`} alt="Rebook shoes" style={{width:'400px',height:'400px'}}/>
-                <div className={styles.layer}>
-                    <h3>Rebook</h3>
-                </div>
-            </div></a></Link>
-            <Link href='/adidas'><a><div className={`${styles.item_col} suj m-4`}>
-                <Image src={adidasimg} className={`${styles.collectionimages} subsuj`} alt="Adidas shoes" style={{width:'400px',height:'400px'}}/>
-                <div className={styles.layer}>
-                    <h3>Adidas</h3>
-                </div>
-            </div></a></Link>
-            <Link href='/nike'><a><div className={`${styles.item_col} suj m-4`}>
-                <Image src={nikeimg} className={`${styles.collectionimages} subsuj`} alt="Nike shoes" style={{width:'400px',height:'400px'}}/>
-                <div className={styles.layer}>
-                    <h3>Nike</h3>
-                </div>
-            </div></a></Link>
-            
-        </div>
-        <div className={styles.row}>
-        <Link href='/bata'><a><div className={`${styles.item_col} suj m-4`}>
-                <Image src={bataimg} className={`${styles.collectionimages} subsuj`} alt="bata shoes" style={{width:'400px',height:'400px'}}/>
-                <div className={styles.layer}>
-                    <h3>Bata</h3>
-                </div>
-            </div></a></Link>
-            <Link href='/campus'><a><div className={`${styles.item_col} suj m-4`}>
-                <Image src={campusimg} className={`${styles.collectionimages} subsuj`} alt="campus shoes" style={{width:'400px',height:'400px'}}/>
-                <div className={styles.layer}>
-                    <h3>Campus</h3>
-                </div>
-            </div></a></Link>
-            <Link href='/puma'><a><div className={`${styles.item_col} suj m-4`}>
-                <Image src={pumaimg} className={`${styles.collectionimages} subsuj`} alt="Puma shoes" style={{width:'400px',height:'400px'}}/>
-                <div className={styles.layer}>
-                    <h3>Puma</h3>
-                </div>
-            </div></a></Link>
-        </div>
-    </section>
-    <div className="recommend-heading mx-12 my-4">
-    <h1 class="sm:text-3xl text-2xl font-medium title-font m-2 text-gray-900 dark:text-gray-100 aos-init aos-animate" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">Bestselling Products</h1>
+            </div>
+            <div className={`w-3/4 m-auto lg:!m-0 lg:!w-1/3 ${styles.slide_out_in}`}>
+              <Image src={bgimg} alt="Sujal Sahu" className='inline-block border rounded-xl w-full h-full' priority/>
+            </div>
+          </div>
+      </div>
+
+      <FeaturedLogos/>
+      <Rating/>
+      <div className="bg-[#f4f8fd] pt-1 pb-20">
+      <Services/>
+      <Features/>
+      </div>
+      <section ref={collectionsRef}>
+      <Collections/>
+      </section>
+    <div className="recommend-heading mx-12 mt-28 mb-4">
+    <h1 class="sm:text-3xl text-2xl font-medium title-font m-2 text-gray-900 aos-init aos-animate" data-aos="zoom-in-up" data-aos-anchor-placement="top-bottom">Bestselling Products</h1>
       <div class="h-1 w-20 bg-pink-500 rounded"></div>
     </div>
     <Recommendproducts products={products}/>

@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 
+
 const nextConfig = {
+  fontDir: './fonts',
   reactStrictMode: true,
   experimental: {
     newNextLinkBehavior: false
@@ -8,6 +10,8 @@ const nextConfig = {
   images: {
     domains: ['images.unsplash.com'],
   },
-}
+};
+
+
 
 module.exports = nextConfig
