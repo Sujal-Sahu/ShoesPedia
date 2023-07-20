@@ -9,7 +9,7 @@ const IllegalAccessError = () => {
         <AlertTriangle size={90} color='red' />
         </div>
          <h1 className='font-bold text-3xl'>404</h1>
-         <div className="text-center font-bold">You are trying to directly accessing the page without following correct path, Please start the process again and follow the instructions to get fully access of website....</div>
+         <div className="text-center font-bold">You are trying to directly accessing the page without following correct path, Please start the process again and follow the instructions to get full access of website....</div>
       </div>
     </div>
   )

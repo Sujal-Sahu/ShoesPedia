@@ -44,18 +44,7 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
             router.push('/login?redirect=checkout');
         }
      }
-    //  const addPaypalScript=async()=>{
-    //     const clientId = process.env.PAYPAL_CLIENT_ID
-    //     const script=document.createElement('script');
-    //     script.type='text/javascript'
-    //     script.src=`https://www.paypal.com/sdk/js?client-id=${clientId}`
-    //     script.async=true
-    //     script.onload=()=>{
-    //         setSdkready(true);
-    //     }
-    //     document.body.appendChild(script);
-    //  }
-     
+   
      handlefetch();
   },[])
   useEffect(()=>{
@@ -140,7 +129,7 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
         {/* <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} onload="onScriptLoad();" crossorigin="anonymous"> 
         </Script>*/}
         </Head>
-        <Navbar user={user} logout={logout} heading="Cart"/>
+        <Navbar user={user} logout={logout} heading="CheckOut"/>
         <div className="h-20"></div>
         <ToastContainer
 position="top-left"
