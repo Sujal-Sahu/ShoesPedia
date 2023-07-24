@@ -77,9 +77,9 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Navbar user={user} logout={logout} heading="HomePage"/>
-      <div className="h-20"></div>
- <SubNavbar/>
-<section className="py-10 bg-indigo-50 flex flex-col md:flex-row justify-center">
+      {/* <div className="h-20"></div> */}
+ {/* <SubNavbar/> */}
+<section className="py-10 bg-[#f4f8fd] flex flex-col md:flex-row justify-center">
 <Filters colors={colors} sizes={sizes} Applyfilters={Applyfilters} handleColorsCheckboxChange={handleColorsCheckboxChange} handleSizesCheckboxChange={handleSizesCheckboxChange}/>
    <ProductsGrid products={filteredProducts} addcart={addcart}/>
 </section>

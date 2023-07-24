@@ -53,6 +53,8 @@ ul.breadcrumb li span {
     background-color: #1f2937;
 }
 
-.login_dropdown:hover{
-    color:#bab6f5;
+.heading{
+    font-family: 'Great Vibes';
+    font-size: 30px;
+    font-style: italic;
 }
