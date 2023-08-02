@@ -1,10 +1,10 @@
 import React from 'react'
 import Navbar from 'Components/Navbar'
 
-const Contact = ({user,logout}) => {
+const Contact = ({user,logout,itemsincart}) => {
   return (
     <div>
-      <Navbar user={user} logout={logout} heading="Contact"/>
+      <Navbar user={user} logout={logout} itemsincart={itemsincart} heading="Contact"/>
       <div className="flex flex-col md:flex-row px-6 sm:!px-12 md:!px-24 lg:!px-32 xl:!px-41 2xl:!px-56 3xl:!px-84">
         <div className="flex flex-col items-start justify-center w-full mt-12 md:w-1/2 xl:mt-20 gap-5">
            <div className="flex flex-col gap-3">

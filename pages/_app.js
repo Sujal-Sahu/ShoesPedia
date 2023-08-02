@@ -21,6 +21,7 @@ export default function App({ Component, pageProps }) {
   const [subtotal,setsubtotal]=useState(0);
   const [user,setuser]=useState({value:null});
   const [progress, setprogress] = useState(0);
+  const [itemsincart,setitemsincart]=useState(0);
   const router=useRouter();
   useEffect(()=>{
       router.events.on('routeChangeStart',()=>{setprogress(40)});
@@ -30,13 +31,14 @@ export default function App({ Component, pageProps }) {
       let mycart=localStorage.getItem("cart");
       if(mycart){
         mycart=JSON.parse(mycart);
+        setitemsincart(Object.keys(mycart).length);
         setcart(mycart);
         let subt=0;
-      let keys=Object.keys(mycart);
-      for(let i=0;i<keys.length;i++){
-          subt+=(mycart[keys[i]].qty * mycart[keys[i]].price);
-      }
-      setsubtotal(subt);
+        let keys=Object.keys(mycart);
+        for(let i=0;i<keys.length;i++){
+            subt+=(mycart[keys[i]].qty * mycart[keys[i]].price);
+        }
+        setsubtotal(subt);
       }
     }
     catch(error){
@@ -54,6 +56,7 @@ export default function App({ Component, pageProps }) {
   }
   const savecart=(mycart)=>{
       localStorage.setItem("cart",JSON.stringify(mycart));
+      setitemsincart(Object.keys(mycart).length);
       let subt=0;
       let keys=Object.keys(cart);
       for(let i=0;i<keys.length;i++){
@@ -69,10 +72,9 @@ export default function App({ Component, pageProps }) {
       else{
         mycart[itemCode]={qty:1,price,name,size,img,category,variant};
       }
-      console.log(mycart);
       setcart(mycart);
       savecart(mycart);
-      router.push(`${process.env.NEXT_PUBLIC_HOST}/cart`);
+      // router.push(`${process.env.NEXT_PUBLIC_HOST}/cart`);
   }
   const removecart=(itemCode,qty,price,name,size,img,category,variant)=>{
      let mycart=cart;
@@ -112,7 +114,7 @@ export default function App({ Component, pageProps }) {
         onLoaderFinished={() => setprogress(0)}
       />
        <main className={`${poppins.variable} font-poppins w-full min-h-screen`}>
-  <Component user={user} logout={logout} addcart={addcart} removecart={removecart} clearcart={clearcart} cart={cart} subtotal={subtotal} buynow={buynow} {...pageProps} />
+  <Component user={user} logout={logout} addcart={addcart} removecart={removecart} clearcart={clearcart} cart={cart} subtotal={subtotal} buynow={buynow} itemsincart={itemsincart} {...pageProps} />
       </main>
   </>
   );

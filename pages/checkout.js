@@ -8,7 +8,7 @@ import { useRouter } from 'next/router';
 import styles from '../styles/checkout.module.css'
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
+const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout,itemsincart}) => {
     const router=useRouter();
   const [name,setname]=useState("");
   const [address,setaddress]=useState("");
@@ -129,7 +129,7 @@ const Checkout = ({addcart,removecart,clearcart,cart,subtotal,user,logout}) => {
         {/* <Script type="application/javascript" src={`${process.env.NEXT_PUBLIC_PAYTM_HOST}/merchantpgpui/checkoutjs/merchants/${process.env.NEXT_PUBLIC_PAYTM_MID}.js`} onload="onScriptLoad();" crossorigin="anonymous"> 
         </Script>*/}
         </Head>
-        <Navbar user={user} logout={logout} heading="CheckOut"/>
+        <Navbar user={user} logout={logout} itemsincart={itemsincart} heading="CheckOut"/>
         <div className="h-20"></div>
         <ToastContainer
 position="top-left"

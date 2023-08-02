@@ -4,17 +4,17 @@ import Link from 'next/link';
 import Navbar from 'Components/Navbar';
 
 const cart = (props) => {
-  let {addcart,removecart,clearcart,cart,subtotal,user,logout}=props;
+  let {addcart,removecart,clearcart,cart,subtotal,user,logout,itemsincart}=props;
   const [tempsubtotal,settempsubtotal]=useState();
   useEffect(()=>{
-    console.log(tempsubtotal)
+     console.log(tempsubtotal)
      if(subtotal){
       settempsubtotal(subtotal);
      }
   },[subtotal])
   return (
     <>
-     <Navbar user={user} logout={logout} heading="Cart"/>
+     <Navbar user={user} logout={logout} itemsincart={itemsincart} heading="Cart"/>
       <div className="min-h-screen pt-20 bg-[#f4f8fd]">
     <h1 className="mb-10 text-center text-2xl font-bold">Cart Items</h1>
     <div className="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">

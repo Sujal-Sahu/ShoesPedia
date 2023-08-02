@@ -14,7 +14,7 @@ import Filters from 'Components/Filters'
 import ProductsGrid from 'Components/ProductsGrid'
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home({user,logout,addcart,removecart,clearcart,cart,subtotal,products,colors,sizes}) {
+export default function Home({user,logout,addcart,removecart,clearcart,cart,subtotal,itemsincart,products,colors,sizes}) {
   const [checkedcolors, setCheckedcolors] = useState({});
   const [checkedsizes, setCheckedsizes] = useState({});
   const [filteredProducts, setfilteredProducts] = useState(products)
@@ -76,7 +76,7 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar user={user} logout={logout} heading="HomePage"/>
+      <Navbar user={user} logout={logout} itemsincart={itemsincart} heading="HomePage"/>
       {/* <div className="h-20"></div> */}
  {/* <SubNavbar/> */}
 <section className="py-10 bg-[#f4f8fd] flex flex-col md:flex-row justify-center">

@@ -20,7 +20,7 @@ import Services from 'Components/Services'
 const inter = Inter({ subsets: ['latin'] })
 
 
-export default function Home({user,logout,addcart,removecart,clearcart,cart,subtotal,products}) {
+export default function Home({user,logout,addcart,removecart,clearcart,cart,subtotal,itemsincart,products}) {
   // console.log(products);
   const collectionsRef = useRef(null);
 
@@ -40,7 +40,7 @@ export default function Home({user,logout,addcart,removecart,clearcart,cart,subt
         <link rel="icon" href="/favicon.ico" />
         <Script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.4.1.min.js"></Script>
       </Head>
-      <Navbar user={user} logout={logout} heading="Home"/>
+      <Navbar user={user} logout={logout} itemsincart={itemsincart} heading="Home"/>
       <div className={`w-full inline-block z-0 bg-white`}>
       <div className='flex flex-col items-start 2xl:items-center 3xl:items-start justify-between w-full lg:flex-row px-6 py-16 bg-[#f4f8fd] sm:!px-12 md:!px-24 lg:!px-32 xl:!px-41 2xl:!px-56 3xl:!px-84'>      
             <div className={`w-full flex flex-col lg:!w-1/2 ${styles.slide_in} 3xl:!w-[45%] py-20 lg:!py-0`}>

@@ -8,15 +8,12 @@ import { useRouter } from 'next/router'
 import { faL } from '@fortawesome/free-solid-svg-icons'
 
 const Navbar = (props) => {
+  // console.log(props);
     const router=useRouter();   
     const [dropdown,setdropdown]=useState(false);
     const [showcart,setshowcart]=useState(true);
-    // useEffect(()=>{
-    //     let exempted=['/order','/checkout','/myaccount','/','/orders'];
-    //     if(exempted.includes(router.pathname)){
-    //         setshowcart(true)
-    //     }
-    // },[])
+    const [itemsincart,setitemsincart]=useState(0);
+    
   const handleclick=(e)=>{
     e.preventDefault();
     const navbar = document.getElementById("navbar");
@@ -35,159 +32,6 @@ const Navbar = (props) => {
       <Head>
         
       </Head>
-       {/* Navbar start */}
-       {/* <nav id="navbar" className="flex w-full z-40 flex-row justify-end bg-gray-700 px-4 sm:justify-between fixed left-0 top-0">
-    <ul className={`${styles.breadcrumb} hidden flex-row items-center py-4 text-lg text-white sm:flex`}>
-        <li className="inline">
-            <a href="/" className="hover:text-[#bab6f5]">ShoesPedia</a>
-        </li>
-        <li className="inline">
-            <span>{props.heading}</span>
-        </li>
-    </ul>
-    <div className='flex flex-row items-center'>
-    {props.user.value && <button id="btnSidebarToggler" type="button" onMouseMove={(event)=>{event.preventDefault();setdropdown(true)}} onMouseLeave={(event)=>{event.preventDefault();setdropdown(false)}} className="py-4 text-2xl flex flex-row text-white hover:text-gray-200">
-    <i className="fa-solid fa-circle-user"></i>
-    </button>}
-    {dropdown && <div className='absolute top-10 right-20 bg-gray-700 text-white px-2 py-4 my-3 z-10' onMouseMove={(event)=>{event.preventDefault();setdropdown(true)}} onMouseLeave={(event)=>{event.preventDefault();setdropdown(false)}}>
-            <ul>
-                <Link href="/myaccount"><a className={styles.login_dropdown}><li>My Account</li></a></Link>
-                <Link href="/orders"><a className={styles.login_dropdown}><li>Orders</li></a></Link>
-                <button className={styles.login_dropdown} onClick={(event)=>{event.preventDefault();props.logout();setdropdown(false)}}><li>Logout</li></button>
-            </ul>
-          </div>}
-    
-    {!props.user.value && <Link href="/login"><button type="button" className="btn btn-primary">Login</button></Link>}
-    {showcart && <Link href="/cart"><button id="btnSidebarToggler" style={{all: "unset",color: "white"}} type="button" className="py-4 text-2xl flex flex-row text-white hover:text-gray-200">
-        <i className="fa-solid fa-cart-shopping mt-1 mx-4"></i>
-    </button></Link>}
-    <button id="btnSidebarToggler" onClick={handleclick} style={{all: "unset",color: "white"}} type="button" className="py-4 text-2xl flex flex-row text-white hover:text-gray-200">
-        <svg id="navClosed" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
-            stroke="currentColor" className="h-8 w-8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-        </svg>
-        <svg id="navOpen" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5"
-            stroke="currentColor" className="hidden h-8 w-8">
-            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-        </svg>
-    </button>
-    </div>
-</nav> */}
-{/* Navbar end */}
-{/* Sidebar start */}
-{/* <div id="containerSidebar" className="z-40">
-    <div className="navbar-menu relative z-40">
-        <nav id={`sidebar`}
-            className={`${styles.sidebar} fixed left-0 bottom-0 flex w-3/4 -translate-x-full flex-col overflow-y-auto bg-gray-700 pt-6 pb-8 sm:max-w-xs lg:w-80 `}>
-            <div className="px-4 pb-6">
-                <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">
-                    Main
-                </h3>
-                <ul className="mb-8 text-sm font-medium">
-                    <li>
-                        <a className="active flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/">
-                            <span className="select-none">Home</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div className="px-4 pb-6">
-                <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">
-                    Shoes
-                </h3>
-                <ul className="mb-8 text-sm font-medium">
-                    
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/rebook">
-                            <span className="select-none">Rebook</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/adidas">
-                            <span className="select-none">Adidas</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/campus">
-                            <span className="select-none">Campus</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/bata">
-                            <span className="select-none">Bata</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/nike">
-                            <span className="select-none">Nike</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/puma">
-                            <span className="select-none">Puma</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div className="px-4 pb-6">
-                <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">
-                    Legal
-                </h3>
-                <ul className="mb-8 text-sm font-medium">
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="#tc">
-                            <span className="select-none">Terms and Condition</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="#privacy">
-                            <span className="select-none">Privacy policy</span>
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <div className="px-4 pb-6">
-                <h3 className="mb-2 text-xs font-medium uppercase text-gray-500">
-                    Others
-                </h3>
-                <ul className="mb-8 text-sm font-medium">
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/cart">
-                            <span className="select-none">Cart</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/about">
-                            <span className="select-none">About</span>
-                        </a>
-                    </li>
-                    <li>
-                        <a className="flex items-center rounded py-3 pl-3 pr-4 text-black hover:bg-gray-100 hover:text-black"
-                            href="/contact">
-                            <span className="select-none">Contact</span>
-                        </a>
-                    </li>
-                    
-                </ul>
-            </div>
-
-            
-        </nav>
-    </div>
-    <div className="mx-auto lg:ml-80"></div>
-</div> */}
-{/* Sidebar end */}
 <div class="bg-white">
   <div id="navbar" class="border-none py-3 px-6 sticky top-0 left-0 z-50 shadow-md">
     <div class="flex justify-between">
@@ -206,7 +50,7 @@ const Navbar = (props) => {
 
       <div class="ml-2 flex items-center">
       <div class="hidden sm:flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-gray-100">
-      <svg xmlns="http://www.w3.org/2000/svg" className='h-5 w-5 text-gray-500' viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round" class="feather feather-phone"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" className='h-5 w-5 text-gray-500 feather feather-phone' viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
       <Link href="/contact"><a className="text-sm font-medium hover:text-black">Contact</a></Link>
         </div>
         <div class="hidden sm:flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-gray-100">
@@ -219,15 +63,17 @@ const Navbar = (props) => {
 
        
 
+          <Link href="/cart"><a>
         <div class="flex cursor-pointer items-center gap-x-1 rounded-md py-2 px-4 hover:bg-gray-100">
           <div class="relative">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-500" viewBox="0 0 20 20" fill="currentColor">
               <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
             </svg>
-            <span class="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">3</span>
+            <span class="absolute -top-2 -right-2 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 p-2 text-xs text-white">{props.itemsincart}</span>
           </div>
-          <Link href="/cart"><a className="text-sm font-medium hover:text-black">Cart</a></Link>
+          <span className="text-sm font-medium hover:text-black">Cart</span>
         </div>
+          </a></Link>
 
         {props.user.value && <button id="btnSidebarToggler" type="button" onMouseMove={(event)=>{event.preventDefault();setdropdown(true)}} onMouseLeave={(event)=>{event.preventDefault();setdropdown(false)}} className="relative py-2 px-4 text-2xl flex flex-row items-center text-black hover:text-gray-500">
     <i className="fa-solid fa-circle-user text-gray-500"></i>

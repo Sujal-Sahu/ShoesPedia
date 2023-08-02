@@ -14,7 +14,7 @@ import ProductsGrid from 'Components/ProductsGrid'
 import Filters from 'Components/Filters'
 const inter = Inter({ subsets: ['latin'] })
 
-const nike = ({user,logout,addcart,removecart,clearcart,cart,subtotal,products,colors,sizes}) => {
+const nike = ({user,logout,addcart,removecart,clearcart,cart,subtotal,itemsincart,products,colors,sizes}) => {
   const [checkedcolors, setCheckedcolors] = useState({});
   const [checkedsizes, setCheckedsizes] = useState({});
   const [filteredProducts, setfilteredProducts] = useState(products)
@@ -75,7 +75,7 @@ const nike = ({user,logout,addcart,removecart,clearcart,cart,subtotal,products,c
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Navbar user={user} logout={logout} heading="Nike"/>
+      <Navbar user={user} logout={logout} itemsincart={itemsincart} heading="Nike"/>
       {/* <div className="h-20"></div> */}
       {/* <SubNavbar/> */}
 <section className="py-10 bg-[#f4f8fd] flex flex-col md:flex-row justify-center">
