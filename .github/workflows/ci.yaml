@@ -1,7 +1,11 @@
 name: Docker CI
 
-on: [push]
-branches: [dev, stg, main]
+on:
+  push:
+    branches: 
+    - dev
+    - stg
+    - main
 
 jobs:
   build_and_push:
