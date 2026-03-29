@@ -25,7 +25,7 @@ jobs:
 
       - name: Wait for rollout
         run: |
-          kubectl rollout status deployment/shoespedia -n shoespedia --timeout=120s
+          kubectl rollout status deployment/shoespedia -n shoespedia --timeout=600s
 
       - name: Stream pod logs
         run: |
