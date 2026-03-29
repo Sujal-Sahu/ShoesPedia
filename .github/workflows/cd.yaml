@@ -1,0 +1,55 @@
+name: Deploy to Kubernetes
+
+on:
+  workflow_run:
+    workflows: ["Docker CI"]
+    types:
+      - completed
+
+jobs:
+  deploy:
+    runs-on: self-hosted
+
+    steps:
+      - name: Checkout (optional)
+        uses: actions/checkout@v4
+
+      ## The local machine has been registered as a GitHub runner. (Need to run the command './run.sh' in actions-runner folder to start the runner.)
+      ## It is assumed that the local machine has kubectl and other required components already set up.
+      ## It is also assumed that the correct cluster context is configured (i.e., the Kind cluster is up and running).
+      - name: Set image tag
+        run: |
+          echo "IMAGE_TAG=$GITHUB_REF" >> $GITHUB_ENV
+
+      - name: Update Deployment Image
+        run: |
+          kubectl set image deployment/shoespedia \
+            app=${{ secrets.DOCKERHUB_USERNAME }}/shoespedia:$IMAGE_TAG \
+            -n shoespedia
+
+      - name: Wait for rollout
+        run: |
+          kubectl rollout status deployment/shoespedia -n shoespedia --timeout=120s
+
+      - name: Stream pod logs
+        run: |
+          POD=$(kubectl get pods -n shoespedia -l app=shoespedia -o jsonpath="{.items[0].metadata.name}")
+
+          echo "Streaming logs from $POD"
+
+          kubectl logs -f $POD -n shoespedia &
+          LOG_PID=$!
+
+          # Wait for pod readiness
+          kubectl wait --for=condition=ready pod/$POD -n shoespedia --timeout=300s || FAILED=true
+
+          # Stop logs
+          kill $LOG_PID
+
+          if [ "$FAILED" = "true" ]; then
+            echo "Pod failed to become ready"
+            kubectl describe pod $POD -n shoespedia
+            exit 1
+          fi
+
+          echo "Deployment successful!"

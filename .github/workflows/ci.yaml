@@ -1,0 +1,42 @@
+name: Docker CI
+
+on:
+  push:
+    branches:
+    - main
+
+jobs:
+  build_and_push:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v5
+
+      # - name: Set variables
+      #   id: vars
+      #   run: |
+      #     BRANCH_NAME=${GITHUB_REF##*/} 
+      #     SHORT_SHA=$(echo $GITHUB_SHA | cut -c1-7) 
+      #     if [ "$BRANCH_NAME" = "main" ]; then 
+      #       IMAGE_TAG=$SHORT_SHA 
+      #     else 
+      #       IMAGE_TAG=${SHORT_SHA}-${BRANCH_NAME} 
+      #     fi 
+      #     echo "IMAGE_TAG=$IMAGE_TAG" >> $GITHUB_ENV
+
+      - name: Login to Docker Hub
+        run: docker login -u ${{ secrets.DOCKERHUB_USERNAME }} -p ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: Build Docker Image
+        run: docker build -t ${{ secrets.DOCKERHUB_USERNAME }}/shoespedia:$GITHUB_SHA .
+
+      - name: Push Docker Image
+        run: |
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/shoespedia:$GITHUB_SHA
+          docker tag ${{ secrets.DOCKERHUB_USERNAME }}/shoespedia:$GITHUB_SHA \
+                    ${{ secrets.DOCKERHUB_USERNAME }}/shoespedia:latest
+          docker push ${{ secrets.DOCKERHUB_USERNAME }}/shoespedia:latest
+
+  
+
+
