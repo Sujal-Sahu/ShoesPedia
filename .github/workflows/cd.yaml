@@ -23,28 +23,40 @@ jobs:
             shoespedia=${{ secrets.DOCKERHUB_USERNAME }}/shoespedia:${{ github.sha }} \
             -n shoespedia
 
-      - name: Wait for rollout
+      - name: Wait for rollout or Rollback in case of failure
         run: |
-          kubectl rollout status deployment/shoespedia -n shoespedia --timeout=600s
+          set +e     # disable immediate exit on error
 
-      - name: Stream pod logs
-        run: |
-          POD=$(kubectl get pods -n shoespedia -l app=shoespedia -o jsonpath="{.items[0].metadata.name}")
+          # Wait for rollout
+          kubectl rollout status deployment/shoespedia -n shoespedia --timeout=600s
+          ROLLOUT_STATUS=$?
+
+          # Get latest pod
+          POD=$(kubectl get pods -n shoespedia -l app=shoespedia \
+            --sort-by=.metadata.creationTimestamp \
+            -o jsonpath="{.items[-1].metadata.name}")
 
           echo "Streaming logs from $POD"
 
           kubectl logs -f $POD -n shoespedia &
           LOG_PID=$!
 
-          # Wait for pod readiness
-          kubectl wait --for=condition=ready pod/$POD -n shoespedia --timeout=300s || FAILED=true
+          sleep 120  # observe logs for some time
 
           # Stop logs
           kill $LOG_PID
 
-          if [ "$FAILED" = "true" ]; then
-            echo "Pod failed to become ready"
+          if [ $ROLLOUT_STATUS -ne 0 ]; then
+            echo "Deployment failed! Rolling back..."
+
+            kubectl rollout undo deployment/shoespedia -n shoespedia
+
+            echo "Waiting for rollback..."
+            kubectl rollout status deployment/shoespedia -n shoespedia --timeout=300s
+
+            echo "Debug info.."
             kubectl describe pod $POD -n shoespedia
+
             exit 1
           fi
 
